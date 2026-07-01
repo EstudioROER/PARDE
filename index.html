@@ -24,9 +24,22 @@
             background: #334155;
             border-radius: 3px;
         }
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .animate-fade-in-up {
+            animation: fadeInUp 0.3s ease-out forwards;
+        }
     </style>
 </head>
-<body class="text-slate-800 antialiased selection:bg-slate-900 selection:text-white">
+<body class="text-slate-800 antialiased selection:bg-slate-900 selection:text-white pb-12">
 
     <!-- Navbar -->
     <nav class="fixed w-full bg-white/90 backdrop-blur-md border-b border-slate-200 z-50">
@@ -56,7 +69,7 @@
     </nav>
 
     <!-- Hero Section (Home) -->
-    <section id="home" class="relative pt-32 pb-20 lg:pt-44 lg:pb-32 overflow-hidden bg-gradient-to-b from-slate-100 via-slate-50 to-white">
+    <section id="home" class="relative pt-32 pb-20 lg:pt-44 lg:pb-24 overflow-hidden bg-gradient-to-b from-slate-100 via-slate-50 to-white">
         <!-- Blueprint Grid Backdrop -->
         <div class="absolute inset-0 bg-[linear-gradient(to_right,#e2e8f0_1px,transparent_1px),linear-gradient(to_bottom,#e2e8f0_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] opacity-60"></div>
         
@@ -77,8 +90,12 @@
                         <a href="#contacto" class="inline-flex justify-center items-center px-6 py-4 bg-slate-900 text-white text-xs font-bold uppercase tracking-wider hover:bg-slate-800 transition-all shadow-xl shadow-slate-900/10">
                             Iniciar Diagnóstico Técnico
                         </a>
-                        <a href="#proyectos" class="inline-flex justify-center items-center px-6 py-4 bg-white border border-slate-300 text-slate-700 text-xs font-bold uppercase tracking-wider hover:bg-slate-50 transition-colors">
-                            Ver Trayectoria Técnica
+                        <!-- New Direct Download Button on Hero -->
+                        <a href="./checklist-certeza-normativa.pdf" download="Checklist_Certeza_Normativa_PARDE.pdf" class="inline-flex justify-center items-center gap-2 px-6 py-4 bg-sky-500 hover:bg-sky-400 text-slate-950 text-xs font-bold uppercase tracking-wider transition-all shadow-xl shadow-sky-500/15">
+                            <svg class="w-4 h-4 text-slate-950" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="square" stroke-linejoin="miter" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
+                            </svg>
+                            Descargar Checklist PDF
                         </a>
                     </div>
                     <!-- USACH & BIM credentials -->
@@ -223,6 +240,40 @@
                             <div id="meta-valor" class="text-rose-400 font-bold mt-1 transition-all duration-300">SIN CERTIFICACIÓN</div>
                         </div>
                     </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Recurso Gratuito (Checklist PDF Banner) - Highly Prominent Conversion Block -->
+    <section class="bg-slate-100 border-y border-slate-200 py-12">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="bg-slate-950 text-white p-8 lg:p-12 relative overflow-hidden flex flex-col lg:flex-row items-center justify-between gap-8 border border-slate-800">
+                <!-- Blueprint visual elements on card -->
+                <div class="absolute inset-0 bg-[linear-gradient(to_right,#1e293b_1px,transparent_1px),linear-gradient(to_bottom,#1e293b_1px,transparent_1px)] bg-[size:2rem_2rem] opacity-25"></div>
+                <div class="absolute -right-20 -bottom-20 w-96 h-96 bg-sky-500/10 rounded-full blur-3xl"></div>
+                
+                <div class="relative z-10 max-w-2xl text-center lg:text-left">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 bg-sky-500/10 border border-sky-500/20 mb-4">
+                        <span class="w-1.5 h-1.5 rounded-full bg-sky-400 animate-pulse"></span>
+                        <span class="text-[9px] font-bold tracking-widest text-sky-400 uppercase font-mono">Recurso Gratuito Exclusivo</span>
+                    </div>
+                    <h3 class="text-2xl md:text-3xl font-black tracking-tight mb-4 uppercase font-sans">
+                        CHECKLIST DE CERTEZA NORMATIVA
+                    </h3>
+                    <p class="text-xs md:text-sm text-slate-300 font-light leading-relaxed mb-2">
+                        Evita que la DOM o los bancos frenen tus transacciones este 2026. Consigue la guía rápida en formato PDF de 1 página para la evaluación exprés de subdivisiones prediales, regularización estructural con el <strong class="text-white font-semibold">Art. 5.6 de la OGUC</strong>, rasante y factibilidades sanitarias.
+                    </p>
+                    <span class="text-[10px] text-slate-500 font-mono tracking-wider block">Diseñado especialmente para corredores de propiedades e inversionistas independientes.</span>
+                </div>
+                
+                <div class="relative z-10 shrink-0">
+                    <a href="./checklist-certeza-normativa.pdf" download="Checklist_Certeza_Normativa_PARDE.pdf" class="inline-flex items-center gap-3 px-8 py-5 bg-sky-500 hover:bg-sky-400 text-slate-950 text-xs font-bold uppercase tracking-wider transition-all shadow-xl shadow-sky-500/10 hover:scale-[1.02] active:scale-[0.98]">
+                        <svg class="w-5 h-5 text-slate-950 stroke-[2.5]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="square" stroke-linejoin="miter" stroke-width="2.5" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
+                        </svg>
+                        Descargar PDF Gratis (1 Pág)
+                    </a>
                 </div>
             </div>
         </div>
@@ -667,8 +718,74 @@
         </div>
     </footer>
 
+    <!-- WhatsApp Dual Floating Widget -->
+    <div class="fixed bottom-6 right-6 z-50 font-sans">
+        <!-- Interactive Multi-contact pop-up card -->
+        <div id="wa-card" class="hidden bottom-16 right-0 absolute w-80 bg-white border border-slate-200 shadow-2xl p-5 rounded-none animate-fade-in-up">
+            <!-- Pop-up Header -->
+            <div class="flex items-center justify-between border-b border-slate-100 pb-3 mb-4">
+                <div class="flex items-center gap-2">
+                    <div class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></div>
+                    <span class="text-[10px] font-bold tracking-widest text-slate-500 uppercase font-mono">Contacto Técnico Express</span>
+                </div>
+                <button onclick="toggleWA()" class="text-slate-400 hover:text-slate-950 transition-colors">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="square" stroke-linejoin="miter" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                </button>
+            </div>
+            
+            <!-- Quick description -->
+            <p class="text-[11px] text-slate-500 mb-4 leading-relaxed">
+                Hola, somos el <strong class="text-slate-900 font-semibold">Par de Arquitectos</strong>. Elige con quién deseas realizar tu consulta técnica:
+            </p>
+
+            <!-- Contacts Options -->
+            <div class="space-y-3">
+                <!-- Option 1: Sebastian -->
+                <a href="https://wa.me/56950196861?text=Hola%20Sebasti%C3%A1n,%20vi%20la%20p%C3%A1gina%20de%20PARDE%20y%20me%20gustar%C3%ADa%20hacer%20una%20consulta%20normativa..." target="_blank" class="flex items-center gap-3 p-3 bg-slate-50 hover:bg-slate-100 transition-all border border-slate-200/80 group">
+                    <div class="w-10 h-10 bg-slate-950 text-white flex items-center justify-center font-bold text-xs font-mono relative shrink-0">
+                        SV
+                        <div class="absolute bottom-0 right-0 w-3 h-3 bg-emerald-500 border border-white rounded-full"></div>
+                    </div>
+                    <div class="text-left">
+                        <span class="block font-bold text-xs text-slate-950 leading-tight group-hover:text-sky-600 transition-colors">Sebastián M. Vera</span>
+                        <span class="text-[9px] text-slate-400 uppercase font-mono">Director Técnico • DOM & Normativa</span>
+                    </div>
+                </a>
+
+                <!-- Option 2: Adolfo -->
+                <a href="https://wa.me/56971089393?text=Hola%20Adolfo,%20vi%20la%20p%C3%A1gina%20de%20PARDE%20y%20me%20gustar%C3%ADa%20hacer%20una%20consulta%20BIM..." target="_blank" class="flex items-center gap-3 p-3 bg-slate-50 hover:bg-slate-100 transition-all border border-slate-200/80 group">
+                    <div class="w-10 h-10 bg-slate-950 text-white flex items-center justify-center font-bold text-xs font-mono relative shrink-0">
+                        AH
+                        <div class="absolute bottom-0 right-0 w-3 h-3 bg-emerald-500 border border-white rounded-full"></div>
+                    </div>
+                    <div class="text-left">
+                        <span class="block font-bold text-xs text-slate-950 leading-tight group-hover:text-sky-600 transition-colors">Adolfo Henríquez C.</span>
+                        <span class="text-[9px] text-slate-400 uppercase font-mono">Director BIM • Visualización & 3D</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <!-- Main Trigger Floating Button -->
+        <button onclick="toggleWA()" class="w-14 h-14 bg-emerald-500 hover:bg-emerald-600 text-white flex items-center justify-center shadow-2xl shadow-emerald-500/20 hover:scale-105 active:scale-95 transition-all relative">
+            <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12.012 2c-5.506 0-9.989 4.478-9.99 9.984a9.96 9.96 0 001.37 5.011L2 22l5.189-1.359a9.927 9.927 0 004.819 1.239h.004c5.507 0 9.99-4.478 9.99-10.004A9.973 9.973 0 0012.012 2zm5.836 14.199c-.24.674-1.398 1.285-1.921 1.365-.47.072-.976.113-2.61-.532-2.101-.827-3.41-2.962-3.513-3.102-.103-.139-.838-1.113-.838-2.124 0-1.01.528-1.507.717-1.713.19-.205.413-.257.551-.257.137 0 .275.001.395.007.124.006.29-.047.452.342.166.4.568 1.385.617 1.485.05.1.083.217.017.35-.067.133-.1.217-.2.333-.1.117-.21.261-.3.35-.1.1-.205.21-.088.411.117.2.52 1.157 1.114 1.684.767.68 1.411.89 1.611.99.2.1.317.083.434-.05.117-.133.5-.584.633-.784.133-.2.267-.166.452-.1.185.067 1.18.557 1.382.658.201.101.334.15.384.234.05.084.05.488-.19.162z"/>
+            </svg>
+            <!-- Badge alert of active connection -->
+            <span class="absolute -top-1.5 -right-1.5 w-5 h-5 bg-rose-500 text-white rounded-full text-[9px] flex items-center justify-center font-bold font-mono shadow-md">2</span>
+        </button>
+    </div>
+
     <!-- Interactive Scripts -->
     <script>
+        // WhatsApp pop-up toggler
+        function toggleWA() {
+            const card = document.getElementById('wa-card');
+            card.classList.toggle('hidden');
+        }
+
         // Switch between CAD raw and optimized views
         function switchView(view) {
             const rawView = document.getElementById('view-raw');
