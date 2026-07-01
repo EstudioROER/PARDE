@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PARDE | Arquitectura Técnica Inmobiliaria & BIM</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #fafafa;
+        }
+        .text-glow {
+            text-shadow: 0 0 12px rgba(56, 189, 248, 0.4);
+        }
+        .custom-scroll::-webkit-scrollbar {
+            width: 6px;
+        }
+        .custom-scroll::-webkit-scrollbar-track {
+            background: #0f172a;
+        }
+        .custom-scroll::-webkit-scrollbar-thumb {
+            background: #334155;
+            border-radius: 3px;
+        }
+    </style>
+</head>
+<body class="text-slate-800 antialiased selection:bg-slate-900 selection:text-white">
+
+    <!-- Navbar -->
+    <nav class="fixed w-full bg-white/90 backdrop-blur-md border-b border-slate-200 z-50">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo PARDE (Representación de un Par de Columnas/Pilares Técnicos) -->
+                <div class="flex-shrink-0 flex items-center gap-3 cursor-pointer" onclick="window.scrollTo({top: 0, behavior: 'smooth'});">
+                    <div class="relative w-9 h-9 bg-slate-950 flex items-center justify-center text-white font-black text-sm tracking-tighter">
+                        P//
+                        <div class="absolute -bottom-1 -right-1 w-3.5 h-3.5 bg-sky-500"></div>
+                    </div>
+                    <div>
+                        <span class="font-black text-xl tracking-tighter text-slate-950 block leading-none">PARDE</span>
+                        <span class="text-[9px] tracking-widest text-slate-500 uppercase font-mono">Un par de arquitectos • Gestión & BIM</span>
+                    </div>
+                </div>
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex space-x-8 items-center">
+                    <a href="#problema" class="text-xs font-semibold tracking-wider uppercase text-slate-600 hover:text-slate-900 transition-colors">El Problema</a>
+                    <a href="#metodo" class="text-xs font-semibold tracking-wider uppercase text-slate-600 hover:text-slate-900 transition-colors">Nuestro Método</a>
+                    <a href="#proyectos" class="text-xs font-semibold tracking-wider uppercase text-slate-600 hover:text-slate-900 transition-colors">Casos de Éxito</a>
+                    <a href="#equipo" class="text-xs font-semibold tracking-wider uppercase text-slate-600 hover:text-slate-900 transition-colors">Nosotros</a>
+                    <a href="#contacto" class="px-5 py-2.5 bg-slate-900 text-white text-xs font-bold uppercase tracking-wider hover:bg-slate-800 transition-colors rounded-none">Plan Impulso</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section (Home) -->
+    <section id="home" class="relative pt-32 pb-20 lg:pt-44 lg:pb-32 overflow-hidden bg-gradient-to-b from-slate-100 via-slate-50 to-white">
+        <!-- Blueprint Grid Backdrop -->
+        <div class="absolute inset-0 bg-[linear-gradient(to_right,#e2e8f0_1px,transparent_1px),linear-gradient(to_bottom,#e2e8f0_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] opacity-60"></div>
+        
+        <div class="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
+            <div class="grid lg:grid-cols-12 gap-12 items-center">
+                <div class="lg:col-span-6 max-w-2xl">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 bg-slate-200/60 border border-slate-300/80 rounded-full mb-6">
+                        <span class="w-2 h-2 rounded-full bg-sky-500 animate-pulse"></span>
+                        <span class="text-[10px] font-bold tracking-wider text-slate-700 uppercase font-mono">Arquitectura Inmobiliaria de Alta Certeza</span>
+                    </div>
+                    <h1 class="text-4xl lg:text-5xl font-black tracking-tight text-slate-950 leading-[1.15] mb-6">
+                        Transformamos terrenos y propiedades en <span class="text-transparent bg-clip-text bg-gradient-to-r from-sky-600 to-slate-800">activos de alta rentabilidad.</span>
+                    </h1>
+                    <p class="text-lg text-slate-600 mb-10 font-normal leading-relaxed">
+                        En <strong class="text-slate-900 font-semibold">PARDE</strong> unimos la precisión normativa y el modelado BIM avanzado para destrabar el corretaje, certificar vuestros terrenos y acelerar las ventas.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <a href="#contacto" class="inline-flex justify-center items-center px-6 py-4 bg-slate-900 text-white text-xs font-bold uppercase tracking-wider hover:bg-slate-800 transition-all shadow-xl shadow-slate-900/10">
+                            Iniciar Diagnóstico Técnico
+                        </a>
+                        <a href="#proyectos" class="inline-flex justify-center items-center px-6 py-4 bg-white border border-slate-300 text-slate-700 text-xs font-bold uppercase tracking-wider hover:bg-slate-50 transition-colors">
+                            Ver Trayectoria Técnica
+                        </a>
+                    </div>
+                    <!-- USACH & BIM credentials -->
+                    <div class="mt-12 grid grid-cols-2 gap-4 border-t border-slate-200 pt-6">
+                        <div>
+                            <span class="block text-xl font-bold text-slate-900 font-mono">USACH</span>
+                            <span class="text-[11px] text-slate-500 tracking-wider">Metodología estricta de escuela pública</span>
+                        </div>
+                        <div>
+                            <span class="block text-xl font-bold text-slate-900 font-mono">BIM & D5 HD</span>
+                            <span class="text-[11px] text-slate-500 tracking-wider">Visualización 3D y análisis de cabidas real</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Interactive High-Fidelity Technical Blueprint Dashboard -->
+                <div class="lg:col-span-6 w-full relative bg-slate-950 rounded-lg p-6 border border-slate-800 shadow-2xl overflow-hidden font-mono text-xs text-slate-400">
+                    
+                    <style>
+                        @keyframes grid-pulse {
+                            0%, 100% { opacity: 0.15; }
+                            50% { opacity: 0.25; }
+                        }
+                        @keyframes laser-scan {
+                            0% { top: 0%; opacity: 0; }
+                            5% { opacity: 1; }
+                            95% { opacity: 1; }
+                            100% { top: 100%; opacity: 0; }
+                        }
+                        @keyframes pulse-ring {
+                            0% { transform: scale(0.95); opacity: 0.8; }
+                            50% { transform: scale(1.3); opacity: 0; }
+                            100% { transform: scale(0.95); opacity: 0; }
+                        }
+                        .tech-grid {
+                            background-image: radial-gradient(#334155 1px, transparent 1px);
+                            background-size: 20px 20px;
+                            animation: grid-pulse 4s infinite ease-in-out;
+                        }
+                        .laser-line {
+                            animation: laser-scan 4s infinite linear;
+                        }
+                        .ping-ring {
+                            animation: pulse-ring 2s infinite ease-out;
+                        }
+                    </style>
+
+                    <!-- Tech UI Header -->
+                    <div class="flex justify-between items-center border-b border-slate-800 pb-4 mb-6">
+                        <div class="flex items-center gap-3">
+                            <div class="relative flex h-2.5 w-2.5">
+                                <span class="ping-ring absolute inline-flex h-full w-full rounded-full bg-sky-400 opacity-75"></span>
+                                <span id="status-dot" class="relative inline-flex rounded-full h-2.5 w-2.5 bg-rose-500 transition-colors duration-500"></span>
+                            </div>
+                            <span class="font-bold text-[9px] tracking-widest text-slate-400 uppercase">PARDE_CAD_ANALYTICS v5.0</span>
+                        </div>
+                        <div class="flex bg-slate-900 p-1 rounded-sm border border-slate-800 shadow-inner">
+                            <button id="btn-raw" onclick="switchView('raw')" class="px-3 py-1.5 rounded-none text-[10px] tracking-wider uppercase transition-all bg-slate-800 text-white font-bold shadow-sm">
+                                Terreno Base
+                            </button>
+                            <button id="btn-roer" onclick="switchView('roer')" class="px-3 py-1.5 rounded-none text-[10px] tracking-wider uppercase transition-all text-slate-500 hover:text-slate-300 font-bold">
+                                Optimización PARDE
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Schematic Display Viewport with active laser and grids -->
+                    <div class="relative h-[320px] bg-slate-950 rounded-sm border border-slate-900/60 flex flex-col justify-center items-center overflow-hidden">
+                        
+                        <!-- Grid Overlay -->
+                        <div class="absolute inset-0 tech-grid"></div>
+                        
+                        <!-- Laser Scanning Effect -->
+                        <div class="absolute left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-sky-500/40 to-transparent laser-line z-20"></div>
+
+                        <!-- Axis Markers -->
+                        <div class="absolute top-2 left-2 text-[8px] text-slate-600">Y-AXIS [LGUC_N_5.6]</div>
+                        <div class="absolute bottom-2 right-2 text-[8px] text-slate-600">X-AXIS [OGUC_S_2.1]</div>
+
+                        <!-- VIEW 1: RAW LAND (UNCERTAINTY) -->
+                        <div id="view-raw" class="absolute inset-0 flex flex-col justify-center items-center p-6 transition-all duration-500 opacity-100 scale-100 z-10">
+                            <svg class="w-64 h-48 text-rose-500/40 stroke-2" viewBox="0 0 240 160" fill="none">
+                                <path d="M40 130 L200 130 L170 40 L60 50 Z" stroke="currentColor" stroke-dasharray="6 6" fill="rgba(244, 63, 94, 0.03)" />
+                                
+                                <line x1="40" y1="130" x2="60" y2="50" stroke="#f43f5e" stroke-width="1" stroke-dasharray="2 2" />
+                                <text x="32" y="90" text-anchor="middle" fill="#f43f5e" class="text-[7px] font-bold" transform="rotate(-75 32 90)">¿Rasante límite?</text>
+
+                                <line x1="170" y1="40" x2="200" y2="130" stroke="#f43f5e" stroke-width="1" stroke-dasharray="2 2" />
+                                <text x="202" y="85" text-anchor="middle" fill="#f43f5e" class="text-[7px] font-bold" transform="rotate(70 202 85)">¿Saneamiento?</text>
+
+                                <g transform="translate(120, 85)" class="animate-pulse">
+                                    <polygon points="0,-15 15,12 -15,12" stroke="#f43f5e" fill="#f43f5e" fill-opacity="0.1" stroke-width="1.5"/>
+                                    <text x="0" y="5" text-anchor="middle" fill="#f43f5e" class="text-[11px] font-bold" font-family="sans-serif">!</text>
+                                    <text x="0" y="25" text-anchor="middle" fill="#f43f5e" class="text-[8px] tracking-widest font-mono">DUDAS DOM / INCERTEZA</text>
+                                </g>
+
+                                <text x="120" y="150" text-anchor="middle" fill="#94a3b8" class="text-[9px] font-semibold tracking-wide uppercase">Activo Estancado - Sin Certezas</text>
+                            </svg>
+                        </div>
+
+                        <!-- VIEW 2: OPTIMIZED BY PARDE -->
+                        <div id="view-roer" class="absolute inset-0 flex flex-col justify-center items-center p-6 transition-all duration-500 opacity-0 scale-95 pointer-events-none z-10">
+                            <svg class="w-64 h-48 stroke-1" viewBox="0 0 240 160" fill="none">
+                                <line x1="20" y1="130" x2="220" y2="130" stroke="#475569" stroke-width="2" />
+                                
+                                <path d="M40 130 L40 50 L140 50 L190 130" stroke="#0ea5e9" stroke-dasharray="4 3" stroke-width="1.2" />
+                                <text x="90" y="42" text-anchor="middle" fill="#0ea5e9" class="text-[7px] font-bold tracking-widest">RASANTE OGUC VALIDADA</text>
+                                
+                                <defs>
+                                    <linearGradient id="facade-1" x1="0%" y1="0%" x2="100%" y2="100%">
+                                        <stop offset="0%" stop-color="#38bdf8" stop-opacity="0.2"/>
+                                        <stop offset="100%" stop-color="#0284c7" stop-opacity="0.5"/>
+                                    </linearGradient>
+                                    <linearGradient id="facade-2" x1="0%" y1="0%" x2="100%" y2="100%">
+                                        <stop offset="0%" stop-color="#0ea5e9" stop-opacity="0.4"/>
+                                        <stop offset="100%" stop-color="#0369a1" stop-opacity="0.7"/>
+                                    </linearGradient>
+                                </defs>
+
+                                <rect x="50" y="60" width="80" height="70" fill="url(#facade-1)" stroke="#38bdf8" stroke-width="1.5" />
+                                <rect x="130" y="80" width="50" height="50" fill="url(#facade-2)" stroke="#0ea5e9" stroke-width="1.5" />
+                                
+                                <line x1="60" y1="75" x2="120" y2="75" stroke="#38bdf8" stroke-dasharray="1 3" stroke-width="2" />
+                                <line x1="60" y1="95" x2="120" y2="95" stroke="#38bdf8" stroke-dasharray="1 3" stroke-width="2" />
+                                <line x1="60" y1="115" x2="120" y2="115" stroke="#38bdf8" stroke-dasharray="1 3" stroke-width="2" />
+                                <line x1="140" y1="95" x2="170" y2="95" stroke="#0ea5e9" stroke-dasharray="1 3" stroke-width="2" />
+                                <line x1="140" y1="115" x2="170" y2="115" stroke="#0ea5e9" stroke-dasharray="1 3" stroke-width="2" />
+
+                                <g stroke="#38bdf8" stroke-width="0.8">
+                                    <line x1="50" y1="52" x2="130" y2="52" />
+                                    <line x1="50" y1="49" x2="50" y2="55" />
+                                    <line x1="130" y1="49" x2="130" y2="55" />
+                                </g>
+                                <text x="90" y="48" text-anchor="middle" fill="#38bdf8" class="text-[6px] tracking-wide">CABIDA OPTIMIZADA PARDE BIM</text>
+
+                                <circle cx="130" cy="80" r="3" fill="#0ea5e9" class="animate-ping"/>
+                                <circle cx="130" cy="80" r="2" fill="#0ea5e9"/>
+
+                                <text x="120" y="148" text-anchor="middle" fill="#0ea5e9" class="text-[8px] font-bold tracking-widest uppercase">ESTUDIO DE CERTEZA COMPLETO</text>
+                            </svg>
+                        </div>
+
+                    </div>
+
+                    <!-- Dynamic CAD Data Analytics Panel -->
+                    <div class="grid grid-cols-3 gap-3 border-t border-slate-900 pt-4 mt-4 text-[9px]">
+                        <div class="bg-slate-900/40 p-2.5 rounded-sm border border-slate-900">
+                            <span class="text-slate-600 block text-[7px] tracking-wider uppercase">VIABILIDAD NORMATIVA</span>
+                            <div id="meta-coef" class="text-rose-400 font-bold mt-1 transition-all duration-300">INDETERMINADO</div>
+                        </div>
+                        <div class="bg-slate-900/40 p-2.5 rounded-sm border border-slate-900">
+                            <span class="text-slate-600 block text-[7px] tracking-wider uppercase">MODELADO BIM / D5</span>
+                            <div id="meta-altura" class="text-rose-400 font-bold mt-1 transition-all duration-300">INEXISTENTE</div>
+                        </div>
+                        <div class="bg-slate-900/40 p-2.5 rounded-sm border border-slate-900">
+                            <span class="text-slate-600 block text-[7px] tracking-wider uppercase">ESTRATEGIA DOM</span>
+                            <div id="meta-valor" class="text-rose-400 font-bold mt-1 transition-all duration-300">SIN CERTIFICACIÓN</div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- El Problema Section (Focus on Brokerages & Developers) -->
+    <section id="problema" class="py-24 bg-slate-950 text-white relative">
+        <div class="absolute inset-0 bg-[radial-gradient(circle_at_bottom_left,rgba(14,165,233,0.1),transparent_40%)]"></div>
+        <div class="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
+            <div class="max-w-4xl mx-auto text-center">
+                <p class="text-xs font-bold tracking-widest text-sky-400 uppercase font-mono mb-4">¿Te ha pasado como corredor o desarrollador?</p>
+                <h2 class="text-3xl md:text-5xl font-black mb-6 tracking-tight">¿Tienes propiedades estancadas por falta de claridad técnica?</h2>
+                <div class="w-16 h-1 bg-sky-500 mx-auto mb-8"></div>
+                <p class="text-lg md:text-xl text-slate-300 font-light leading-relaxed mb-8">
+                    La falta de certeza jurídica, la rigidez de las normativas municipales (DOM) o la incapacidad para visualizar el verdadero potencial de un terreno ahuyentan a los inversionistas. En <strong class="text-white font-semibold">PARDE</strong> estructuramos la información técnica clave para que tus clientes tomen decisiones rápidas, transparentes y seguras.
+                </p>
+                <div class="grid sm:grid-cols-3 gap-6 text-left mt-12">
+                    <div class="p-6 bg-slate-900/60 border border-slate-800">
+                        <span class="text-rose-400 font-mono text-xs font-bold block mb-2">01 / TRÁMITES RETRASADOS</span>
+                        <h4 class="text-white font-bold mb-2">Rechazos en la DOM</h4>
+                        <p class="text-slate-400 text-xs font-light">Expedientes mal armados o desconocimiento de exenciones como el Art. 5.6 de la OGUC alargan las transacciones indefinidamente.</p>
+                    </div>
+                    <div class="p-6 bg-slate-900/60 border border-slate-800">
+                        <span class="text-rose-400 font-mono text-xs font-bold block mb-2">02 / TERRENOS SIN PLANOS</span>
+                        <h4 class="text-white font-bold mb-2">Lotes sin subdivisiones</h4>
+                        <p class="text-slate-400 text-xs font-light">Incertidumbres en la aplicación de la Ley 20.234 de saneamiento que impiden estructurar escrituraciones y ventas limpias.</p>
+                    </div>
+                    <div class="p-6 bg-slate-900/60 border border-slate-800">
+                        <span class="text-rose-400 font-mono text-xs font-bold block mb-2">03 / POBRE RECOGNICIÓN</span>
+                        <h4 class="text-white font-bold mb-2">Presentaciones deficientes</h4>
+                        <p class="text-slate-400 text-xs font-light">Falta de visualizaciones tridimensionales que impiden a los compradores percibir la volumetría real permitida en el sitio.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Nuestro Método Section -->
+    <section id="metodo" class="py-24 bg-white relative">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="mb-16 text-center">
+                <span class="text-xs font-bold tracking-widest text-slate-500 uppercase font-mono block mb-2">Metodología de Trabajo</span>
+                <h2 class="text-3xl md:text-4xl font-black tracking-tight text-slate-900">Soluciones de Extremo a Extremo</h2>
+                <div class="w-16 h-1 bg-slate-900 mx-auto mt-4"></div>
+            </div>
+
+            <div class="grid lg:grid-cols-3 gap-8">
+                <!-- Step 1 -->
+                <div class="p-8 border border-slate-200 bg-slate-50 relative hover:border-slate-400 transition-colors">
+                    <div class="w-10 h-10 bg-slate-900 text-white flex items-center justify-center font-mono text-sm font-bold mb-6">01</div>
+                    <h3 class="text-lg font-bold text-slate-900 mb-3 uppercase tracking-tight">1. Diagnóstico Normativo y Viabilidad</h3>
+                    <p class="text-slate-600 text-xs font-light leading-relaxed mb-4">
+                        Analizamos de forma exhaustiva la normativa urbana (LGUC / OGUC). Determinamos la viabilidad legal y excepciones normativas (como el Art. 5.6 de la OGUC para exenciones de cálculo estructural en regularizaciones), factibilidades de subdivisiones prediales bajo la Ley 20.234 o saneamientos (Ley 20.898).
+                    </p>
+                    <span class="text-[10px] font-bold text-slate-400 font-mono block">RESPONSABLE: Sebastián M. Vera (DOM)</span>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="p-8 border border-slate-200 bg-slate-50 relative hover:border-slate-400 transition-colors">
+                    <div class="w-10 h-10 bg-slate-900 text-white flex items-center justify-center font-mono text-sm font-bold mb-6">02</div>
+                    <h3 class="text-lg font-bold text-slate-900 mb-3 uppercase tracking-tight">2. Desarrollo BIM & Renders HD</h3>
+                    <p class="text-slate-600 text-xs font-light leading-relaxed mb-4">
+                        A través de modelado BIM riguroso (ArchiCAD/Revit) estructuramos planimetrías coherentes y detalles técnicos precisos. Luego, desarrollamos simulaciones tridimensionales y renders fotorrealistas de alto impacto mediante D5 Render para proyectar visualmente el activo comercial.
+                    </p>
+                    <span class="text-[10px] font-bold text-slate-400 font-mono block">RESPONSABLE: Adolfo Henríquez C. (BIM)</span>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="p-8 border border-slate-200 bg-slate-50 relative hover:border-slate-400 transition-colors">
+                    <div class="w-10 h-10 bg-slate-900 text-white flex items-center justify-center font-mono text-sm font-bold mb-6">03</div>
+                    <h3 class="text-lg font-bold text-slate-900 mb-3 uppercase tracking-tight">3. Expediente DOM e Informe de Venta</h3>
+                    <p class="text-slate-600 text-xs font-light leading-relaxed mb-4">
+                        Armamos carpetas municipales perfectas para la DOM, listas para la obtención de Permisos de Edificación y Recepciones Definitivas. Soportamos vuestra gestión de corretaje con informes de valorización técnica y piezas de presentación listas para cautivar inversionistas.
+                    </p>
+                    <span class="text-[10px] font-bold text-slate-400 font-mono block">FOCO: Cierre Comercial Seguro</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Proyectos y Trayectoria Técnica Section -->
+    <section id="proyectos" class="py-24 bg-slate-50 border-y border-slate-200">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="mb-16 flex flex-col md:flex-row justify-between items-start md:items-end gap-4">
+                <div>
+                    <span class="text-xs font-bold tracking-widest text-slate-500 uppercase font-mono block mb-2">Nuestra Experiencia Demostrable</span>
+                    <h2 class="text-3xl md:text-4xl font-black tracking-tight text-slate-900">Casos de Éxito y Colaboraciones</h2>
+                </div>
+                <p class="text-slate-600 text-xs font-light max-w-md">
+                    No hacemos supuestos teóricos; aplicamos vuestro conocimiento en proyectos de regularización habitacional, planificación de macro-lotes territoriales de alta complejidad e infraestructura pública.
+                </p>
+            </div>
+
+            <!-- Custom grid showing structured project details -->
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                
+                <!-- Project 1 -->
+                <div class="bg-white border border-slate-200 p-6 flex flex-col justify-between hover:shadow-lg transition-shadow">
+                    <div>
+                        <div class="flex justify-between items-start mb-4">
+                            <span class="text-[10px] font-bold px-2 py-1 bg-slate-100 text-slate-600 font-mono uppercase">Vivienda Residencial</span>
+                            <span class="text-[10px] text-slate-400 font-mono">Región Metropolitana</span>
+                        </div>
+                        <h4 class="text-base font-bold text-slate-950 mb-2">Proyecto Casa Mediterránea Peñaflor</h4>
+                        <p class="text-slate-600 text-xs font-light mb-4">
+                            Regularización, ampliaciones de primer/segundo piso y optimización espacial técnica. Resolución de expedientes municipales complejos y obtención de Recepciones Finales.
+                        </p>
+                    </div>
+                    <div class="border-t border-slate-100 pt-4 mt-4 grid grid-cols-2 gap-2 text-[10px] font-mono">
+                        <div>
+                            <span class="text-slate-400 block uppercase">Normativa</span>
+                            <span class="text-slate-800 font-bold">DFL 2 / OGUC 5.6</span>
+                        </div>
+                        <div>
+                            <span class="text-slate-400 block uppercase">Estatus DOM</span>
+                            <span class="text-emerald-600 font-bold">RECEP. FINAL OK</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="bg-white border border-slate-200 p-6 flex flex-col justify-between hover:shadow-lg transition-shadow">
+                    <div>
+                        <div class="flex justify-between items-start mb-4">
+                            <span class="text-[10px] font-bold px-2 py-1 bg-sky-50 text-sky-700 font-mono uppercase">Planificación Territorial</span>
+                            <span class="text-[10px] text-slate-400 font-mono">Aysén / Patagonia</span>
+                        </div>
+                        <h4 class="text-base font-bold text-slate-950 mb-2">Master Plan Puerto Raúl Marín Balmaceda</h4>
+                        <p class="text-slate-600 text-xs font-light mb-4">
+                            Subdivisión y diseño territorial de más de 200 macro-lotes asociados al Fundo Los Leones. Integración de modelos de conservación ambiental (DRC y APP) con habitabilidad sostenible.
+                        </p>
+                    </div>
+                    <div class="border-t border-slate-100 pt-4 mt-4 grid grid-cols-2 gap-2 text-[10px] font-mono">
+                        <div>
+                            <span class="text-slate-400 block uppercase">Superficie</span>
+                            <span class="text-slate-800 font-bold">> 200 Lotes</span>
+                        </div>
+                        <div>
+                            <span class="text-slate-400 block uppercase">BIM Engine</span>
+                            <span class="text-sky-600 font-bold">ArchiCAD Plan</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="bg-white border border-slate-200 p-6 flex flex-col justify-between hover:shadow-lg transition-shadow">
+                    <div>
+                        <div class="flex justify-between items-start mb-4">
+                            <span class="text-[10px] font-bold px-2 py-1 bg-slate-100 text-slate-600 font-mono uppercase">Rehabilitación & Estructura</span>
+                            <span class="text-[10px] text-slate-400 font-mono">San Bernardo</span>
+                        </div>
+                        <h4 class="text-base font-bold text-slate-950 mb-2">Rehabilitación Estructural y DOM</h4>
+                        <p class="text-slate-600 text-xs font-light mb-4">
+                            Evaluación técnica estructural para la determinación de exención de proyecto de cálculo de acuerdo a la OGUC 5.6. Regularización integral de viviendas en zona sur de Santiago.
+                        </p>
+                    </div>
+                    <div class="border-t border-slate-100 pt-4 mt-4 grid grid-cols-2 gap-2 text-[10px] font-mono">
+                        <div>
+                            <span class="text-slate-400 block uppercase">Estudio</span>
+                            <span class="text-slate-800 font-bold">Análisis de Estructuras</span>
+                        </div>
+                        <div>
+                            <span class="text-slate-400 block uppercase">Ubicación</span>
+                            <span class="text-slate-800 font-bold">San Bernardo, RM</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 4 -->
+                <div class="bg-white border border-slate-200 p-6 flex flex-col justify-between hover:shadow-lg transition-shadow">
+                    <div>
+                        <div class="flex justify-between items-start mb-4">
+                            <span class="text-[10px] font-bold px-2 py-1 bg-slate-100 text-slate-600 font-mono uppercase">Equipamiento Público</span>
+                            <span class="text-[10px] text-slate-400 font-mono">Infraestructura</span>
+                        </div>
+                        <h4 class="text-base font-bold text-slate-950 mb-2">Cuarteles Institucionales & Educación</h4>
+                        <p class="text-slate-600 text-xs font-light mb-4">
+                            Modelado 3D, documentación técnica e integración con equipos multidisciplinares para concursos públicos (PDI y recintos de alta exigencia).
+                        </p>
+                    </div>
+                    <div class="border-t border-slate-100 pt-4 mt-4 grid grid-cols-2 gap-2 text-[10px] font-mono">
+                        <div>
+                            <span class="text-slate-400 block uppercase">Tipología</span>
+                            <span class="text-slate-800 font-bold">Seguridad Pública</span>
+                        </div>
+                        <div>
+                            <span class="text-slate-400 block uppercase">Coordinación</span>
+                            <span class="text-slate-800 font-bold">Multidisciplinar</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 5 -->
+                <div class="bg-white border border-slate-200 p-6 flex flex-col justify-between hover:shadow-lg transition-shadow">
+                    <div>
+                        <div class="flex justify-between items-start mb-4">
+                            <span class="text-[10px] font-bold px-2 py-1 bg-sky-50 text-sky-700 font-mono uppercase">Hospitalidad & Turismo</span>
+                            <span class="text-[10px] text-slate-400 font-mono">Sur de Chile</span>
+                        </div>
+                        <h4 class="text-base font-bold text-slate-950 mb-2">Centros Turísticos y Hoteles Sustentables</h4>
+                        <p class="text-slate-600 text-xs font-light mb-4">
+                            Diseño y coordinación de 3 proyectos hoteleros y centros turísticos sustentables, integrando visualización fotorrealista avanzada en D5 Render.
+                        </p>
+                    </div>
+                    <div class="border-t border-slate-100 pt-4 mt-4 grid grid-cols-2 gap-2 text-[10px] font-mono">
+                        <div>
+                            <span class="text-slate-400 block uppercase">Render Engine</span>
+                            <span class="text-sky-600 font-bold">D5 Render HD</span>
+                        </div>
+                        <div>
+                            <span class="text-slate-400 block uppercase">Sustentabilidad</span>
+                            <span class="text-slate-800 font-bold">Bajo Impacto</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 6 -->
+                <div class="bg-white border-2 border-dashed border-slate-300 p-6 flex flex-col justify-between items-center text-center hover:bg-slate-100 transition-colors cursor-pointer" onclick="document.getElementById('contacto').scrollIntoView();">
+                    <div class="my-auto">
+                        <svg class="w-8 h-8 text-slate-400 mx-auto mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="square" stroke-linejoin="miter" stroke-width="1.5" d="M12 4v16m8-8H4"></path>
+                        </svg>
+                        <h4 class="text-sm font-bold text-slate-900 uppercase tracking-wider mb-2">¿Quieres evaluar vuestro activo?</h4>
+                        <p class="text-slate-500 text-xs font-light max-w-xs mx-auto">
+                            Ingresa los datos de tu terreno o propiedad y realizamos un informe de cabida normativa y potencial de rentabilidad inicial.
+                        </p>
+                    </div>
+                    <span class="text-[11px] font-bold text-slate-800 underline uppercase tracking-wider mt-4">Iniciar Solicitud</span>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Equipo Fundador Section -->
+    <section id="equipo" class="py-24 bg-white relative">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="mb-16 text-center max-w-3xl mx-auto">
+                <span class="text-xs font-bold tracking-widest text-slate-500 uppercase font-mono block mb-2">¿Quiénes somos?</span>
+                <h2 class="text-3xl md:text-4xl font-black tracking-tight text-slate-900 mb-4">Un "par de arquitectos" de la USACH</h2>
+                <div class="w-16 h-1 bg-slate-950 mx-auto mb-6"></div>
+                <p class="text-slate-600 text-sm font-light leading-relaxed">
+                    Nacemos de un concepto simple y honesto: **PARDE** (Par de Arquitectos). Nos conocimos en las aulas de la Universidad de Santiago de Chile, donde nos formamos con rigor público y compromiso ético. Hoy unimos nuestras especialidades para ser vuestro pilar técnico de confianza.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-12 max-w-5xl mx-auto">
+                
+                <!-- Founder 1: Sebastián -->
+                <div class="bg-slate-50 border border-slate-200 p-8 flex flex-col justify-between hover:border-slate-300 transition-all">
+                    <div>
+                        <div class="flex items-center gap-4 mb-6">
+                            <div class="w-16 h-16 bg-slate-900 text-white flex items-center justify-center font-bold text-2xl font-mono relative">
+                                SV
+                                <div class="absolute bottom-0 right-0 w-4 h-4 bg-sky-500"></div>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-bold text-slate-900 leading-tight">Sebastián M. Vera</h3>
+                                <p class="text-xs text-sky-600 font-mono font-semibold tracking-wider uppercase mt-1">Arquitecto Fundador & Director Técnico</p>
+                            </div>
+                        </div>
+                        <p class="text-slate-600 text-xs font-light leading-relaxed mb-6">
+                            Egresado de la Universidad de Santiago de Chile (USACH) con una trayectoria especializada en la regularización habitacional, optimización de espacios y la gestión estratégica de expedientes municipales ante las DOM. Experto en normativas urbanísticas chilenas, Ley del Mono y exenciones estructurales bajo el Art. 5.6 de la OGUC.
+                        </p>
+                        
+                        <div class="space-y-3 border-t border-slate-200 pt-4">
+                            <span class="text-[10px] font-bold text-slate-500 uppercase tracking-widest block mb-1">Especialidad Normativa:</span>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-2.5 py-1 bg-white border border-slate-200 text-slate-700 text-[10px] font-mono">Ley 20.234 (Saneamiento)</span>
+                                <span class="px-2.5 py-1 bg-white border border-slate-200 text-slate-700 text-[10px] font-mono">Ley 20.898 (Ley del Mono)</span>
+                                <span class="px-2.5 py-1 bg-white border border-slate-200 text-slate-700 text-[10px] font-mono">Exención Art. 5.6 OGUC</span>
+                                <span class="px-2.5 py-1 bg-white border border-slate-200 text-slate-700 text-[10px] font-mono">DFL 2 & LGUC</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-8 border-t border-slate-200 pt-4 text-[11px] text-slate-500 flex justify-between items-center">
+                        <span>USACH Titulado (2022)</span>
+                        <a href="mailto:parde.arquitectura@gmail.com" class="text-slate-900 font-bold hover:underline">parde.arquitectura@gmail.com</a>
+                    </div>
+                </div>
+
+                <!-- Founder 2: Adolfo -->
+                <div class="bg-slate-50 border border-slate-200 p-8 flex flex-col justify-between hover:border-slate-300 transition-all">
+                    <div>
+                        <div class="flex items-center gap-4 mb-6">
+                            <div class="w-16 h-16 bg-slate-900 text-white flex items-center justify-center font-bold text-2xl font-mono relative">
+                                AH
+                                <div class="absolute bottom-0 right-0 w-4 h-4 bg-sky-500"></div>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-bold text-slate-900 leading-tight">Adolfo Henríquez Carvajal</h3>
+                                <p class="text-xs text-sky-600 font-mono font-semibold tracking-wider uppercase mt-1">Arquitecto & Director de Coordinación BIM</p>
+                            </div>
+                        </div>
+                        <p class="text-slate-600 text-xs font-light leading-relaxed mb-6">
+                            Egresado de la Universidad de Santiago de Chile (USACH) especializado en arquitectura sustentable, planificación territorial de macro-lotes y modelado de alta fidelidad. Experto en optimización volumétrica y representaciones avanzadas mediante motores de renderizado como D5 Render, ArchiCAD y Revit.
+                        </p>
+                        
+                        <div class="space-y-3 border-t border-slate-200 pt-4">
+                            <span class="text-[10px] font-bold text-slate-500 uppercase tracking-widest block mb-1">Especialidad Tecnológica:</span>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-2.5 py-1 bg-white border border-slate-200 text-slate-700 text-[10px] font-mono">ArchiCAD & Revit BIM</span>
+                                <span class="px-2.5 py-1 bg-white border border-slate-200 text-slate-700 text-[10px] font-mono">D5 Render HD</span>
+                                <span class="px-2.5 py-1 bg-white border border-slate-200 text-slate-700 text-[10px] font-mono">Planificación de Lotes</span>
+                                <span class="px-2.5 py-1 bg-white border border-slate-200 text-slate-700 text-[10px] font-mono">Coordinación Especialidades</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-8 border-t border-slate-200 pt-4 text-[11px] text-slate-500 flex justify-between items-center">
+                        <span>USACH Titulado (2022)</span>
+                        <a href="https://www.linkedin.com/in/adolfo-henriquez-arq/" target="_blank" class="text-slate-900 font-bold hover:underline">LinkedIn Oficial</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Cobertura Geográfica -->
+    <section class="bg-slate-950 py-16 text-white border-t border-slate-900 relative">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="grid md:grid-cols-12 gap-8 items-center">
+                <div class="md:col-span-4">
+                    <p class="text-xs font-bold tracking-widest text-sky-400 uppercase font-mono mb-2">Rango Operativo</p>
+                    <h3 class="text-2xl font-black tracking-tight mb-4">Presencia y Cobertura Directa</h3>
+                    <p class="text-slate-400 text-xs font-light leading-relaxed">
+                        Desarrollamos nuestras operaciones de manera presencial y digital en las comunas estratégicas de la zona central de Chile, garantizando rapidez en las gestiones municipales locales.
+                    </p>
+                </div>
+                <div class="md:col-span-8 grid sm:grid-cols-2 gap-4">
+                    <div class="bg-slate-900/40 p-6 border border-slate-800">
+                        <span class="block text-sky-400 font-mono text-xs font-bold mb-2">Región Metropolitana</span>
+                        <h4 class="text-white font-bold mb-3">RM Completa</h4>
+                        <p class="text-slate-400 text-xs font-light leading-relaxed">
+                            Peñaflor, San Bernardo, El Bosque, Paine, Puente Alto, Lo Espejo, Santiago Centro y alrededores.
+                        </p>
+                    </div>
+                    <div class="bg-slate-900/40 p-6 border border-slate-800">
+                        <span class="block text-sky-400 font-mono text-xs font-bold mb-2">Región de Valparaíso</span>
+                        <h4 class="text-white font-bold mb-3">V Región</h4>
+                        <p class="text-slate-400 text-xs font-light leading-relaxed">
+                            Valparaíso, Viña del Mar, Quilpué, Villa Alemana, Concón y áreas aledañas.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contacto / Plan Impulso -->
+    <section id="contacto" class="py-24 bg-white border-t border-slate-200 relative">
+        <div class="max-w-4xl mx-auto px-6 lg:px-8 text-center">
+            <span class="text-xs font-bold tracking-widest text-slate-500 uppercase font-mono block mb-2">Consultoría Sin Costo Inicial</span>
+            <h2 class="text-3xl md:text-4xl font-black tracking-tight text-slate-900 mb-4">Inicia tu Plan Impulso Comercial</h2>
+            <p class="text-base text-slate-600 font-light mb-12 max-w-2xl mx-auto">
+                Cuéntanos sobre vuestra propiedad o cartera de activos estancados. Sebastián y Adolfo evaluarán los antecedentes normativos e hipótesis de diseño preliminares.
+            </p>
+            
+            <form class="text-left bg-slate-50 p-8 border border-slate-200 shadow-sm max-w-2xl mx-auto" onsubmit="event.preventDefault(); document.getElementById('success-msg').style.display='block';">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                    <div>
+                        <label for="nombre" class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-2">Nombre Completo *</label>
+                        <input type="text" id="nombre" required class="w-full px-4 py-3 bg-white border border-slate-300 focus:outline-none focus:border-slate-900 focus:ring-1 focus:ring-slate-900 transition-colors text-xs font-mono" placeholder="Ej. Juan Pérez">
+                    </div>
+                    <div>
+                        <label for="empresa" class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-2">Empresa / Corredora</label>
+                        <input type="text" id="empresa" class="w-full px-4 py-3 bg-white border border-slate-300 focus:outline-none focus:border-slate-900 focus:ring-1 focus:ring-slate-900 transition-colors text-xs font-mono" placeholder="Ej. Propiedades Santiago">
+                    </div>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                    <div>
+                        <label for="email" class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-2">Correo electrónico *</label>
+                        <input type="email" id="email" required class="w-full px-4 py-3 bg-white border border-slate-300 focus:outline-none focus:border-slate-900 focus:ring-1 focus:ring-slate-900 transition-colors text-xs font-mono" placeholder="ejemplo@empresa.cl">
+                    </div>
+                    <div>
+                        <label for="tel" class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-2">Teléfono de Contacto *</label>
+                        <input type="tel" id="tel" required class="w-full px-4 py-3 bg-white border border-slate-300 focus:outline-none focus:border-slate-900 focus:ring-1 focus:ring-slate-900 transition-colors text-xs font-mono" placeholder="Ej. +56 9 1234 5678">
+                    </div>
+                </div>
+                <div class="mb-6">
+                    <label for="tipo_proyecto" class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-2">Servicio de Interés</label>
+                    <select id="tipo_proyecto" class="w-full px-4 py-3 bg-white border border-slate-300 focus:outline-none focus:border-slate-900 focus:ring-1 focus:ring-slate-900 transition-colors text-xs font-mono">
+                        <option>Estudio de Cabida y Viabilidad de Terrenos</option>
+                        <option>Regularización de Viviendas (Ley 20.898 / DFL 2)</option>
+                        <option>Saneamiento y Subdivisiones (Ley 20.234)</option>
+                        <option>Modelado BIM y Visualizaciones 3D para Ventas</option>
+                        <option>Otro trámite DOM / Consultoría Integral</option>
+                    </select>
+                </div>
+                <div class="mb-8">
+                    <label for="mensaje" class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-2">Detalles del Activo / Comuna y Problemática Actual</label>
+                    <textarea id="mensaje" rows="4" class="w-full px-4 py-3 bg-white border border-slate-300 focus:outline-none focus:border-slate-900 focus:ring-1 focus:ring-slate-900 transition-colors text-xs font-mono" placeholder="Indique comuna, m2 de terreno o si posee alguna observación de la DOM previa..."></textarea>
+                </div>
+                <button type="submit" class="w-full py-4 bg-slate-900 text-white text-xs font-bold tracking-wider hover:bg-slate-800 transition-colors uppercase font-mono">
+                    Solicitar Diagnóstico Técnico
+                </button>
+
+                <!-- Custom Success Message without alert() -->
+                <div id="success-msg" class="hidden mt-4 p-4 bg-emerald-50 border border-emerald-300 text-emerald-800 text-xs font-mono">
+                    ¡Formulario recibido con éxito! El par de arquitectos de PARDE se pondrán en contacto contigo en un plazo de 24 horas hábiles.
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-slate-950 py-16 border-t border-slate-900 text-slate-400">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-8 mb-12">
+                <div class="md:col-span-4 space-y-4">
+                    <div class="flex items-center gap-2">
+                        <div class="w-6 h-6 bg-white flex items-center justify-center text-slate-950 font-black text-xs">P//</div>
+                        <span class="font-bold tracking-widest text-white text-sm">PARDE</span>
+                    </div>
+                    <p class="text-xs text-slate-500 leading-relaxed font-light">
+                        Oficina técnica de arquitectura especializada en cabidas normativas, regularizaciones y representaciones comerciales 3D premium en la Región Metropolitana y Valparaíso.
+                    </p>
+                </div>
+                <div class="md:col-span-4 space-y-3 text-xs">
+                    <h4 class="text-white font-bold uppercase tracking-wider text-[10px] font-mono">Contacto Directo</h4>
+                    <ul class="space-y-2 font-mono text-[11px] text-slate-400">
+                        <li>Sebastián: +56 9 5019 6861</li>
+                        <li>Adolfo: +56 9 7108 9393</li>
+                        <li>Email: parde.arquitectura@gmail.com</li>
+                        <li>Email: Adolfohc.arq@gmail.com</li>
+                        <li>Web: parde.cl</li>
+                    </ul>
+                </div>
+                <div class="md:col-span-4 space-y-3 text-xs">
+                    <h4 class="text-white font-bold uppercase tracking-wider text-[10px] font-mono">Rigor de Fundación Académica</h4>
+                    <p class="text-xs text-slate-500 font-light">
+                        Estudio fundado por arquitectos titulados de la Universidad de Santiago de Chile (USACH). Rigor técnico, ética profesional y resolutividad municipal en cada expediente.
+                    </p>
+                </div>
+            </div>
+            <div class="border-t border-slate-900 pt-8 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs text-slate-600">
+                <p>© 2026 PARDE. Todos los derechos reservados. Santiago & Valparaíso, Chile.</p>
+                <div class="flex gap-4">
+                    <a href="https://www.linkedin.com/in/adolfo-henriquez-arq/" target="_blank" class="hover:text-slate-400">LinkedIn Adolfo</a>
+                    <span class="text-slate-800">|</span>
+                    <a href="#home" class="hover:text-slate-400">Volver arriba ↑</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Interactive Schematic Controls Script -->
+    <script>
+        function switchView(view) {
+            const rawView = document.getElementById('view-raw');
+            const roerView = document.getElementById('view-roer');
+            const btnRaw = document.getElementById('btn-raw');
+            const btnRoer = document.getElementById('btn-roer');
+            const statusDot = document.getElementById('status-dot');
+            
+            // Dynamic Metric Elements
+            const metaCoef = document.getElementById('meta-coef');
+            const metaAltura = document.getElementById('meta-altura');
+            const metaValor = document.getElementById('meta-valor');
+
+            if (view === 'raw') {
+                rawView.classList.remove('opacity-0', 'scale-95', 'pointer-events-none');
+                rawView.classList.add('opacity-100', 'scale-100');
+                
+                roerView.classList.add('opacity-0', 'scale-95', 'pointer-events-none');
+                roerView.classList.remove('opacity-100', 'scale-100');
+
+                btnRaw.className = "px-3 py-1.5 rounded-none text-[10px] tracking-wider uppercase transition-all bg-slate-800 text-white font-bold shadow-sm";
+                btnRoer.className = "px-3 py-1.5 rounded-none text-[10px] tracking-wider uppercase transition-all text-slate-500 hover:text-slate-300 font-bold";
+                
+                statusDot.className = "relative inline-flex rounded-full h-2.5 w-2.5 bg-rose-500 transition-colors duration-500";
+
+                metaCoef.textContent = "INDETERMINADO";
+                metaCoef.className = "text-rose-400 font-bold mt-1 transition-all duration-300";
+                
+                metaAltura.textContent = "INEXISTENTE";
+                metaAltura.className = "text-rose-400 font-bold mt-1 transition-all duration-300";
+                
+                metaValor.textContent = "SIN CERTIFICACIÓN";
+                metaValor.className = "text-rose-400 font-bold mt-1 transition-all duration-300";
+            } else {
+                roerView.classList.remove('opacity-0', 'scale-95', 'pointer-events-none');
+                roerView.classList.add('opacity-100', 'scale-100');
+                
+                rawView.classList.add('opacity-0', 'scale-95', 'pointer-events-none');
+                rawView.classList.remove('opacity-100', 'scale-100');
+
+                btnRoer.className = "px-3 py-1.5 rounded-none text-[10px] tracking-wider uppercase transition-all bg-slate-800 text-white font-bold shadow-sm";
+                btnRaw.className = "px-3 py-1.5 rounded-none text-[10px] tracking-wider uppercase transition-all text-slate-500 hover:text-slate-300 font-bold";
+
+                statusDot.className = "relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-400 transition-colors duration-500";
+
+                metaCoef.textContent = "LEY 20.234 / 20.898 OK";
+                metaCoef.className = "text-sky-400 font-bold mt-1 transition-all duration-300";
+                
+                metaAltura.textContent = "DISEÑO OPTIMIZADO EN BIM";
+                metaAltura.className = "text-sky-400 font-bold mt-1 transition-all duration-300";
+                
+                metaValor.textContent = "APROBACIÓN EN DOM ASEGURADA";
+                metaValor.className = "text-sky-400 font-bold mt-1 transition-all duration-300";
+            }
+        }
+    </script>
+
+</body>
+</html>
