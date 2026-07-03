@@ -4,12 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PARDE | Arquitectura Técnica Inmobiliaria & BIM</title>
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <!-- jspdf para la generación limpia y descarga del documento técnico del proyecto piloto -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <style>
         body {
             font-family: 'Inter', sans-serif;
             background-color: #fafafa;
+        }
+        .font-mono-tech {
+            font-family: 'JetBrains Mono', monospace;
         }
         .text-glow {
             text-shadow: 0 0 12px rgba(56, 189, 248, 0.4);
@@ -53,13 +59,17 @@
                     </div>
                     <div>
                         <span class="font-black text-xl tracking-tighter text-slate-950 block leading-none">PARDE</span>
-                        <span class="text-[9px] tracking-widest text-slate-500 uppercase font-mono">Un par de arquitectos • Gestión & BIM</span>
+                        <span class="text-[9px] tracking-widest text-slate-500 uppercase font-mono-tech">Un par de arquitectos • Gestión & BIM</span>
                     </div>
                 </div>
                 <!-- Desktop Menu -->
                 <div class="hidden md:flex space-x-8 items-center">
                     <a href="#problema" class="text-xs font-semibold tracking-wider uppercase text-slate-600 hover:text-slate-900 transition-colors">El Problema</a>
                     <a href="#metodo" class="text-xs font-semibold tracking-wider uppercase text-slate-600 hover:text-slate-900 transition-colors">Nuestro Método</a>
+                    <a href="#piloto" class="text-xs font-semibold tracking-wider uppercase text-slate-600 hover:text-sky-600 transition-colors flex items-center gap-1.5">
+                        <span class="w-1.5 h-1.5 rounded-full bg-sky-500 animate-pulse"></span>
+                        Plan Piloto (PPP)
+                    </a>
                     <a href="#proyectos" class="text-xs font-semibold tracking-wider uppercase text-slate-600 hover:text-slate-900 transition-colors">Casos de Éxito</a>
                     <a href="#equipo" class="text-xs font-semibold tracking-wider uppercase text-slate-600 hover:text-slate-900 transition-colors">Nosotros</a>
                     <a href="#contacto" class="px-5 py-2.5 bg-slate-900 text-white text-xs font-bold uppercase tracking-wider hover:bg-slate-800 transition-colors rounded-none">Plan Impulso</a>
@@ -78,7 +88,7 @@
                 <div class="lg:col-span-6 max-w-2xl">
                     <div class="inline-flex items-center gap-2 px-3 py-1 bg-slate-200/60 border border-slate-300/80 rounded-full mb-6">
                         <span class="w-2 h-2 rounded-full bg-sky-500 animate-pulse"></span>
-                        <span class="text-[10px] font-bold tracking-wider text-slate-700 uppercase font-mono">Arquitectura Inmobiliaria de Alta Certeza</span>
+                        <span class="text-[10px] font-bold tracking-wider text-slate-700 uppercase font-mono-tech">Arquitectura Inmobiliaria de Alta Certeza</span>
                     </div>
                     <h1 class="text-4xl lg:text-5xl font-black tracking-tight text-slate-950 leading-[1.15] mb-6">
                         Transformamos terrenos y propiedades en <span class="text-transparent bg-clip-text bg-gradient-to-r from-sky-600 to-slate-800">activos de alta rentabilidad.</span>
@@ -90,29 +100,29 @@
                         <a href="#contacto" class="inline-flex justify-center items-center px-6 py-4 bg-slate-900 text-white text-xs font-bold uppercase tracking-wider hover:bg-slate-800 transition-all shadow-xl shadow-slate-900/10">
                             Iniciar Diagnóstico Técnico
                         </a>
-                        <!-- New Direct Download Button on Hero -->
-                        <a href="./checklist-certeza-normativa.pdf" download="Checklist_Certeza_Normativa_PARDE.pdf" class="inline-flex justify-center items-center gap-2 px-6 py-4 bg-sky-500 hover:bg-sky-400 text-slate-950 text-xs font-bold uppercase tracking-wider transition-all shadow-xl shadow-sky-500/15">
+                        <!-- Updated Direct Download Button to generate Pilot PDF -->
+                        <button onclick="downloadPilotPDF()" class="inline-flex justify-center items-center gap-2 px-6 py-4 bg-sky-500 hover:bg-sky-400 text-slate-950 text-xs font-bold uppercase tracking-wider transition-all shadow-xl shadow-sky-500/15">
                             <svg class="w-4 h-4 text-slate-950" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="square" stroke-linejoin="miter" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
                             </svg>
-                            Descargar Checklist PDF
-                        </a>
+                            Descargar Programa Piloto (PDF)
+                        </button>
                     </div>
                     <!-- USACH & BIM credentials -->
                     <div class="mt-12 grid grid-cols-2 gap-4 border-t border-slate-200 pt-6">
                         <div>
-                            <span class="block text-xl font-bold text-slate-900 font-mono">USACH</span>
+                            <span class="block text-xl font-bold text-slate-900 font-mono-tech">USACH</span>
                             <span class="text-[11px] text-slate-500 tracking-wider">Metodología estricta de escuela pública</span>
                         </div>
                         <div>
-                            <span class="block text-xl font-bold text-slate-900 font-mono">BIM & D5 HD</span>
+                            <span class="block text-xl font-bold text-slate-900 font-mono-tech">BIM & D5 HD</span>
                             <span class="text-[11px] text-slate-500 tracking-wider">Visualización 3D y análisis de cabidas real</span>
                         </div>
                     </div>
                 </div>
                 
                 <!-- Interactive High-Fidelity Technical Blueprint Dashboard -->
-                <div class="lg:col-span-6 w-full relative bg-slate-950 rounded-lg p-6 border border-slate-800 shadow-2xl overflow-hidden font-mono text-xs text-slate-400">
+                <div class="lg:col-span-6 w-full relative bg-slate-950 rounded-lg p-6 border border-slate-800 shadow-2xl overflow-hidden font-mono-tech text-xs text-slate-400">
                     
                     <style>
                         @keyframes grid-pulse {
@@ -183,7 +193,7 @@
                                 <g transform="translate(120, 85)" class="animate-pulse">
                                     <polygon points="0,-15 15,12 -15,12" stroke="#f43f5e" fill="#f43f5e" fill-opacity="0.1" stroke-width="1.5"/>
                                     <text x="0" y="5" text-anchor="middle" fill="#f43f5e" class="text-[11px] font-bold" font-family="sans-serif">!</text>
-                                    <text x="0" y="25" text-anchor="middle" fill="#f43f5e" class="text-[8px] tracking-widest font-mono">DUDAS DOM / INCERTEZA</text>
+                                    <text x="0" y="25" text-anchor="middle" fill="#f43f5e" class="text-[8px] tracking-widest font-mono-tech">DUDAS DOM / INCERTEZA</text>
                                 </g>
                                 <text x="120" y="150" text-anchor="middle" fill="#94a3b8" class="text-[9px] font-semibold tracking-wide uppercase">Activo Estancado - Sin Certezas</text>
                             </svg>
@@ -245,7 +255,7 @@
         </div>
     </section>
 
-    <!-- Recurso Gratuito (Checklist PDF Banner) - Highly Prominent Conversion Block -->
+    <!-- Recurso Gratuito (PDF Banner) - Highly Prominent Conversion Block -->
     <section class="bg-slate-100 border-y border-slate-200 py-12">
         <div class="max-w-7xl mx-auto px-6 lg:px-8">
             <div class="bg-slate-950 text-white p-8 lg:p-12 relative overflow-hidden flex flex-col lg:flex-row items-center justify-between gap-8 border border-slate-800">
@@ -256,23 +266,89 @@
                 <div class="relative z-10 max-w-2xl text-center lg:text-left">
                     <div class="inline-flex items-center gap-2 px-3 py-1 bg-sky-500/10 border border-sky-500/20 mb-4">
                         <span class="w-1.5 h-1.5 rounded-full bg-sky-400 animate-pulse"></span>
-                        <span class="text-[9px] font-bold tracking-widest text-sky-400 uppercase font-mono">Recurso Gratuito Exclusivo</span>
+                        <span class="text-[9px] font-bold tracking-widest text-sky-400 uppercase font-mono-tech">PROPUESTA INSTITUCIONAL 2026</span>
                     </div>
                     <h3 class="text-2xl md:text-3xl font-black tracking-tight mb-4 uppercase font-sans">
-                        CHECKLIST DE CERTEZA NORMATIVA
+                        PROGRAMA DE PROYECTOS PILOTO (PPP)
                     </h3>
                     <p class="text-xs md:text-sm text-slate-300 font-light leading-relaxed mb-2">
-                        Evita que la DOM o los bancos frenen tus transacciones este 2026. Consigue la guía rápida en formato PDF de 1 página para la evaluación exprés de subdivisiones prediales, regularización estructural con el <strong class="text-white font-semibold">Art. 5.6 de la OGUC</strong>, rasante y factibilidades sanitarias.
+                        ¿Tienes terrenos o propiedades complejas estancadas en cartera? Seleccionamos un activo clave de tu oficina y le aplicamos nuestra ingeniería técnica de vanguardia a <strong class="text-sky-400 font-semibold">costo inicial de desarrollo de 0 CLP</strong>. Obtén el documento de la propuesta para conocer los requisitos de postulación.
                     </p>
-                    <span class="text-[10px] text-slate-500 font-mono tracking-wider block">Diseñado especialmente para corredores de propiedades e inversionistas independientes.</span>
+                    <span class="text-[10px] text-slate-500 font-mono-tech tracking-wider block">Diseñado especialmente para corredoras de propiedades locales, oficinas de gestión y desarrolladores inmobiliarios.</span>
                 </div>
                 
                 <div class="relative z-10 shrink-0">
-                    <a href="./checklist-certeza-normativa.pdf" download="Checklist_Certeza_Normativa_PARDE.pdf" class="inline-flex items-center gap-3 px-8 py-5 bg-sky-500 hover:bg-sky-400 text-slate-950 text-xs font-bold uppercase tracking-wider transition-all shadow-xl shadow-sky-500/10 hover:scale-[1.02] active:scale-[0.98]">
+                    <button onclick="downloadPilotPDF()" class="inline-flex items-center gap-3 px-8 py-5 bg-sky-500 hover:bg-sky-400 text-slate-950 text-xs font-bold uppercase tracking-wider transition-all shadow-xl shadow-sky-500/10 hover:scale-[1.02] active:scale-[0.98]">
                         <svg class="w-5 h-5 text-slate-950 stroke-[2.5]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="square" stroke-linejoin="miter" stroke-width="2.5" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
                         </svg>
-                        Descargar PDF Gratis (1 Pág)
+                        Descargar Propuesta PDF (3 Págs)
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- El Programa de Proyectos Piloto (PPP) - Nueva Sección Educativa e Interactiva -->
+    <section id="piloto" class="py-24 bg-white relative border-b border-slate-200">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="max-w-3xl mx-auto text-center mb-16">
+                <span class="text-xs font-bold tracking-widest text-sky-600 uppercase font-mono-tech block mb-2">PPP • Programa de Proyectos Piloto 2026</span>
+                <h2 class="text-3xl md:text-4xl font-black tracking-tight text-slate-950">
+                    Certeza Técnica y Modelado BIM Sin Costo de Desarrollo Inicial
+                </h2>
+                <div class="w-20 h-1 bg-sky-500 mx-auto mt-4 mb-6"></div>
+                <p class="text-sm text-slate-600 font-light leading-relaxed">
+                    El mayor obstáculo al vender una propiedad es la incertidumbre normativa o espacial. Con nuestro programa piloto, analizamos tu activo más complejo sin costo financiero inicial para tu oficina técnica o corredora.
+                </p>
+            </div>
+
+            <!-- Pasos interactivos / Esquema -->
+            <div class="grid lg:grid-cols-4 gap-6 mb-16">
+                <div class="p-6 bg-slate-50 border border-slate-200 rounded-lg hover:shadow-md transition-shadow">
+                    <div class="text-xs font-mono-tech text-sky-600 font-bold mb-3">FASE 01</div>
+                    <h3 class="font-bold text-slate-900 mb-2">Fase de Selección</h3>
+                    <p class="text-slate-600 text-xs font-light leading-relaxed">
+                        Nos entregas datos clave: Rol, dirección o Certificado de Informaciones Previas (CIP) del activo estancado.
+                    </p>
+                </div>
+                <div class="p-6 bg-slate-50 border border-slate-200 rounded-lg hover:shadow-md transition-shadow">
+                    <div class="text-xs font-mono-tech text-sky-600 font-bold mb-3">FASE 02</div>
+                    <h3 class="font-bold text-slate-900 mb-2">Diagnóstico Normativo</h3>
+                    <p class="text-slate-600 text-xs font-light leading-relaxed">
+                        Evaluación estricta de límites de Plan Regulador Comunal, rasantes, coeficientes y exenciones del Art. 5.6 de la OGUC.
+                    </p>
+                </div>
+                <div class="p-6 bg-slate-50 border border-slate-200 rounded-lg hover:shadow-md transition-shadow">
+                    <div class="text-xs font-mono-tech text-sky-600 font-bold mb-3">FASE 03</div>
+                    <h3 class="font-bold text-slate-900 mb-2">Cabida BIM 3D</h3>
+                    <p class="text-slate-600 text-xs font-light leading-relaxed">
+                        Modelado tridimensional volumétrico en ArchiCAD o Revit para proyectar la ocupación y volumen máximo habitable.
+                    </p>
+                </div>
+                <div class="p-6 bg-slate-50 border border-slate-200 rounded-lg hover:shadow-md transition-shadow">
+                    <div class="text-xs font-mono-tech text-sky-600 font-bold mb-3">FASE 04</div>
+                    <h3 class="font-bold text-slate-900 mb-2">Dossier de Certeza</h3>
+                    <p class="text-slate-600 text-xs font-light leading-relaxed">
+                        Entregamos un completo dossier de venta listo para captar inversionistas con seguridad jurídica y espacial.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Panel de Alianza Mutua -->
+            <div class="bg-slate-950 text-white p-8 rounded-none border border-slate-800 grid md:grid-cols-12 gap-8 items-center">
+                <div class="md:col-span-8">
+                    <h3 class="text-lg font-bold uppercase tracking-wider mb-2 font-mono-tech text-sky-400">¿Por qué hacemos esta inversión a Costo 0?</h3>
+                    <p class="text-xs text-slate-300 font-light leading-relaxed">
+                        Creemos firmemente en el beneficio de alianzas estratégicas duraderas. Si el dossier del piloto no les ayuda a cerrar el negocio, <strong class="text-white font-semibold">no nos deben nada</strong> y se quedan con el material. Si se concreta la venta, establecemos un canal de trabajo para toda su cartera bajo honorarios integrados.
+                    </p>
+                </div>
+                <div class="md:col-span-4 flex flex-col sm:flex-row md:flex-col gap-3 justify-center">
+                    <button onclick="downloadPilotPDF()" class="px-5 py-3.5 bg-sky-500 hover:bg-sky-400 text-slate-950 font-bold text-xs uppercase tracking-wider transition-colors font-mono-tech text-center">
+                        Descargar Bases PDF
+                    </button>
+                    <a href="#contacto" class="px-5 py-3.5 bg-slate-800 hover:bg-slate-700 text-white font-bold text-xs uppercase tracking-wider transition-colors font-mono-tech text-center border border-slate-700">
+                        Postular Mi Activo Ahora
                     </a>
                 </div>
             </div>
@@ -284,7 +360,7 @@
         <div class="absolute inset-0 bg-[radial-gradient(circle_at_bottom_left,rgba(14,165,233,0.1),transparent_40%)]"></div>
         <div class="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
             <div class="max-w-4xl mx-auto text-center">
-                <p class="text-xs font-bold tracking-widest text-sky-400 uppercase font-mono mb-4">¿Te ha pasado como corredor o desarrollador?</p>
+                <p class="text-xs font-bold tracking-widest text-sky-400 uppercase font-mono-tech mb-4">¿Te ha pasado como corredor o desarrollador?</p>
                 <h2 class="text-3xl md:text-5xl font-black mb-6 tracking-tight">¿Tienes propiedades estancadas por falta de claridad técnica?</h2>
                 <div class="w-16 h-1 bg-sky-500 mx-auto mb-8"></div>
                 <p class="text-lg md:text-xl text-slate-300 font-light leading-relaxed mb-8">
@@ -292,17 +368,17 @@
                 </p>
                 <div class="grid sm:grid-cols-3 gap-6 text-left mt-12">
                     <div class="p-6 bg-slate-900/60 border border-slate-800">
-                        <span class="text-rose-400 font-mono text-xs font-bold block mb-2">01 / TRÁMITES RETRASADOS</span>
+                        <span class="text-rose-400 font-mono-tech text-xs font-bold block mb-2">01 / TRÁMITES RETRASADOS</span>
                         <h4 class="text-white font-bold mb-2">Rechazos en la DOM</h4>
                         <p class="text-slate-400 text-xs font-light">Expedientes mal armados o desconocimiento de exenciones como el Art. 5.6 de la OGUC alargan las transacciones indefinidamente.</p>
                     </div>
                     <div class="p-6 bg-slate-900/60 border border-slate-800">
-                        <span class="text-rose-400 font-mono text-xs font-bold block mb-2">02 / TERRENOS SIN PLANOS</span>
+                        <span class="text-rose-400 font-mono-tech text-xs font-bold block mb-2">02 / TERRENOS SIN PLANOS</span>
                         <h4 class="text-white font-bold mb-2">Lotes sin subdivisiones</h4>
                         <p class="text-slate-400 text-xs font-light">Incertidumbres en la aplicación de la Ley 20.234 de saneamiento que impiden estructurar escrituraciones y ventas limpias.</p>
                     </div>
                     <div class="p-6 bg-slate-900/60 border border-slate-800">
-                        <span class="text-rose-400 font-mono text-xs font-bold block mb-2">03 / POBRE RECOGNICIÓN</span>
+                        <span class="text-rose-400 font-mono-tech text-xs font-bold block mb-2">03 / POBRE RECOGNICIÓN</span>
                         <h4 class="text-white font-bold mb-2">Presentaciones deficientes</h4>
                         <p class="text-slate-400 text-xs font-light">Falta de visualizaciones tridimensionales que impiden a los compradores percibir la volumetría real permitida en el sitio.</p>
                     </div>
@@ -315,7 +391,7 @@
     <section id="metodo" class="py-24 bg-white relative">
         <div class="max-w-7xl mx-auto px-6 lg:px-8">
             <div class="mb-16 text-center">
-                <span class="text-xs font-bold tracking-widest text-slate-500 uppercase font-mono block mb-2">Metodología de Trabajo</span>
+                <span class="text-xs font-bold tracking-widest text-slate-500 uppercase font-mono-tech block mb-2">Metodología de Trabajo</span>
                 <h2 class="text-3xl md:text-4xl font-black tracking-tight text-slate-900">Soluciones de Extremo a Extremo</h2>
                 <div class="w-16 h-1 bg-slate-950 mx-auto mt-4"></div>
             </div>
@@ -323,32 +399,32 @@
             <div class="grid lg:grid-cols-3 gap-8">
                 <!-- Step 1 -->
                 <div class="p-8 border border-slate-200 bg-slate-50 relative hover:border-slate-400 transition-colors">
-                    <div class="w-10 h-10 bg-slate-900 text-white flex items-center justify-center font-mono text-sm font-bold mb-6">01</div>
+                    <div class="w-10 h-10 bg-slate-900 text-white flex items-center justify-center font-mono-tech text-sm font-bold mb-6">01</div>
                     <h3 class="text-lg font-bold text-slate-900 mb-3 uppercase tracking-tight">1. Diagnóstico Normativo y Viabilidad</h3>
                     <p class="text-slate-600 text-xs font-light leading-relaxed mb-4">
                         Analizamos de forma exhaustiva la normativa urbana (LGUC / OGUC). Determinamos la viabilidad legal y excepciones normativas (como el Art. 5.6 de la OGUC para exenciones de cálculo estructural en regularizaciones), factibilidades de subdivisiones prediales bajo la Ley 20.234 o saneamientos (Ley 20.898).
                     </p>
-                    <span class="text-[10px] font-bold text-slate-400 font-mono block">RESPONSABLE: Sebastián M. Vera (DOM)</span>
+                    <span class="text-[10px] font-bold text-slate-400 font-mono-tech block">RESPONSABLE: Sebastián M. Vera (DOM)</span>
                 </div>
 
                 <!-- Step 2 -->
                 <div class="p-8 border border-slate-200 bg-slate-50 relative hover:border-slate-400 transition-colors">
-                    <div class="w-10 h-10 bg-slate-900 text-white flex items-center justify-center font-mono text-sm font-bold mb-6">02</div>
+                    <div class="w-10 h-10 bg-slate-900 text-white flex items-center justify-center font-mono-tech text-sm font-bold mb-6">02</div>
                     <h3 class="text-lg font-bold text-slate-900 mb-3 uppercase tracking-tight">2. Desarrollo BIM & Renders HD</h3>
                     <p class="text-slate-600 text-xs font-light leading-relaxed mb-4">
                         A través de modelado BIM riguroso (ArchiCAD/Revit) estructuramos planimetrías coherentes y detalles técnicos precisos. Luego, desarrollamos simulaciones tridimensionales y renders fotorrealistas de alto impacto mediante D5 Render para proyectar visualmente el activo comercial.
                     </p>
-                    <span class="text-[10px] font-bold text-slate-400 font-mono block">RESPONSABLE: Adolfo Henríquez C. (BIM)</span>
+                    <span class="text-[10px] font-bold text-slate-400 font-mono-tech block">RESPONSABLE: Adolfo Henríquez C. (BIM)</span>
                 </div>
 
                 <!-- Step 3 -->
                 <div class="p-8 border border-slate-200 bg-slate-50 relative hover:border-slate-400 transition-colors">
-                    <div class="w-10 h-10 bg-slate-900 text-white flex items-center justify-center font-mono text-sm font-bold mb-6">03</div>
+                    <div class="w-10 h-10 bg-slate-900 text-white flex items-center justify-center font-mono-tech text-sm font-bold mb-6">03</div>
                     <h3 class="text-lg font-bold text-slate-900 mb-3 uppercase tracking-tight">3. Expediente DOM e Informe de Venta</h3>
                     <p class="text-slate-600 text-xs font-light leading-relaxed mb-4">
                         Armamos carpetas municipales perfectas para la DOM, listas para la obtención de Permisos de Edificación y Recepciones Definitivas. Soportamos vuestra gestión de corretaje con informes de valorización técnica y piezas de presentación listas para cautivar inversionistas.
                     </p>
-                    <span class="text-[10px] font-bold text-slate-400 font-mono block">FOCO: Cierre Comercial Seguro</span>
+                    <span class="text-[10px] font-bold text-slate-400 font-mono-tech block">FOCO: Cierre Comercial Seguro</span>
                 </div>
             </div>
         </div>
@@ -359,7 +435,7 @@
         <div class="max-w-7xl mx-auto px-6 lg:px-8">
             <div class="mb-16 flex flex-col md:flex-row justify-between items-start md:items-end gap-4">
                 <div>
-                    <span class="text-xs font-bold tracking-widest text-slate-500 uppercase font-mono block mb-2">Nuestra Experiencia Demostrable</span>
+                    <span class="text-xs font-bold tracking-widest text-slate-500 uppercase font-mono-tech block mb-2">Nuestra Experiencia Demostrable</span>
                     <h2 class="text-3xl md:text-4xl font-black tracking-tight text-slate-900">Casos de Éxito y Colaboraciones</h2>
                 </div>
                 <p class="text-slate-600 text-xs font-light max-w-md">
@@ -372,15 +448,15 @@
                 <div class="bg-white border border-slate-200 p-6 flex flex-col justify-between hover:shadow-lg transition-shadow">
                     <div>
                         <div class="flex justify-between items-start mb-4">
-                            <span class="text-[10px] font-bold px-2 py-1 bg-slate-100 text-slate-600 font-mono uppercase">Vivienda Residencial</span>
-                            <span class="text-[10px] text-slate-400 font-mono">Región Metropolitana</span>
+                            <span class="text-[10px] font-bold px-2 py-1 bg-slate-100 text-slate-600 font-mono-tech uppercase">Vivienda Residencial</span>
+                            <span class="text-[10px] text-slate-400 font-mono-tech">Región Metropolitana</span>
                         </div>
                         <h4 class="text-base font-bold text-slate-950 mb-2">Proyecto Casa Mediterránea Peñaflor</h4>
                         <p class="text-slate-600 text-xs font-light mb-4">
                             Regularización, ampliaciones de primer/segundo piso y optimización espacial técnica. Resolución de expedientes municipales complejos y obtención de Recepciones Finales.
                         </p>
                     </div>
-                    <div class="border-t border-slate-100 pt-4 mt-4 grid grid-cols-2 gap-2 text-[10px] font-mono">
+                    <div class="border-t border-slate-100 pt-4 mt-4 grid grid-cols-2 gap-2 text-[10px] font-mono-tech">
                         <div>
                             <span class="text-slate-400 block uppercase">Normativa</span>
                             <span class="text-slate-800 font-bold">DFL 2 / OGUC 5.6</span>
@@ -396,15 +472,15 @@
                 <div class="bg-white border border-slate-200 p-6 flex flex-col justify-between hover:shadow-lg transition-shadow">
                     <div>
                         <div class="flex justify-between items-start mb-4">
-                            <span class="text-[10px] font-bold px-2 py-1 bg-sky-50 text-sky-700 font-mono uppercase">Planificación Territorial</span>
-                            <span class="text-[10px] text-slate-400 font-mono">Aysén / Patagonia</span>
+                            <span class="text-[10px] font-bold px-2 py-1 bg-sky-50 text-sky-700 font-mono-tech uppercase">Planificación Territorial</span>
+                            <span class="text-[10px] text-slate-400 font-mono-tech">Aysén / Patagonia</span>
                         </div>
                         <h4 class="text-base font-bold text-slate-950 mb-2">Master Plan Puerto Raúl Marín Balmaceda</h4>
                         <p class="text-slate-600 text-xs font-light mb-4">
                             Subdivisión y diseño territorial de más de 200 macro-lotes asociados al Fundo Los Leones. Integración de modelos de conservación ambiental (DRC y APP) con habitabilidad sostenible.
                         </p>
                     </div>
-                    <div class="border-t border-slate-100 pt-4 mt-4 grid grid-cols-2 gap-2 text-[10px] font-mono">
+                    <div class="border-t border-slate-100 pt-4 mt-4 grid grid-cols-2 gap-2 text-[10px] font-mono-tech">
                         <div>
                             <span class="text-slate-400 block uppercase">Superficie</span>
                             <span class="text-slate-800 font-bold">> 200 Lotes</span>
@@ -420,15 +496,15 @@
                 <div class="bg-white border border-slate-200 p-6 flex flex-col justify-between hover:shadow-lg transition-shadow">
                     <div>
                         <div class="flex justify-between items-start mb-4">
-                            <span class="text-[10px] font-bold px-2 py-1 bg-slate-100 text-slate-600 font-mono uppercase">Rehabilitación & Estructura</span>
-                            <span class="text-[10px] text-slate-400 font-mono">San Bernardo</span>
+                            <span class="text-[10px] font-bold px-2 py-1 bg-slate-100 text-slate-600 font-mono-tech uppercase">Rehabilitación & Estructura</span>
+                            <span class="text-[10px] text-slate-400 font-mono-tech">San Bernardo</span>
                         </div>
                         <h4 class="text-base font-bold text-slate-950 mb-2">Rehabilitación Estructural y DOM</h4>
                         <p class="text-slate-600 text-xs font-light mb-4">
                             Evaluación técnica estructural para la determinación de exención de proyecto de cálculo de acuerdo a la OGUC 5.6. Regularización integral de viviendas en zona sur de Santiago.
                         </p>
                     </div>
-                    <div class="border-t border-slate-100 pt-4 mt-4 grid grid-cols-2 gap-2 text-[10px] font-mono">
+                    <div class="border-t border-slate-100 pt-4 mt-4 grid grid-cols-2 gap-2 text-[10px] font-mono-tech">
                         <div>
                             <span class="text-slate-400 block uppercase">Estudio</span>
                             <span class="text-slate-800 font-bold">Análisis de Estructuras</span>
@@ -444,21 +520,21 @@
                 <div class="bg-white border border-slate-200 p-6 flex flex-col justify-between hover:shadow-lg transition-shadow">
                     <div>
                         <div class="flex justify-between items-start mb-4">
-                            <span class="text-[10px] font-bold px-2 py-1 bg-slate-100 text-slate-600 font-mono uppercase">Equipamiento Público</span>
-                            <span class="text-[10px] text-slate-400 font-mono">Infraestructura</span>
+                            <span class="text-[10px] font-bold px-2 py-1 bg-slate-100 text-slate-600 font-mono-tech uppercase">Equipamiento Público</span>
+                            <span class="text-[10px] text-slate-400 font-mono-tech">Infraestructura</span>
                         </div>
                         <h4 class="text-base font-bold text-slate-950 mb-2">Cuarteles Institucionales & Educación</h4>
                         <p class="text-slate-600 text-xs font-light mb-4">
                             Modelado 3D, documentación técnica e integración con equipos multidisciplinares para concursos públicos (PDI y recintos de alta exigencia).
                         </p>
                     </div>
-                    <div class="border-t border-slate-100 pt-4 mt-4 grid grid-cols-2 gap-2 text-[10px] font-mono">
+                    <div class="border-t border-slate-100 pt-4 mt-4 grid grid-cols-2 gap-2 text-[10px] font-mono-tech">
                         <div>
                             <span class="text-slate-400 block uppercase">Tipología</span>
                             <span class="text-slate-800 font-bold">Seguridad Pública</span>
                         </div>
                         <div>
-                            <span class="text-slate-400 block uppercase">Coordinación</span>
+                            <span class="text-slate-800 font-bold">Coordinación</span>
                             <span class="text-slate-800 font-bold">Multidisciplinar</span>
                         </div>
                     </div>
@@ -468,15 +544,15 @@
                 <div class="bg-white border border-slate-200 p-6 flex flex-col justify-between hover:shadow-lg transition-shadow">
                     <div>
                         <div class="flex justify-between items-start mb-4">
-                            <span class="text-[10px] font-bold px-2 py-1 bg-sky-50 text-sky-700 font-mono uppercase">Hospitalidad & Turismo</span>
-                            <span class="text-[10px] text-slate-400 font-mono">Sur de Chile</span>
+                            <span class="text-[10px] font-bold px-2 py-1 bg-sky-50 text-sky-700 font-mono-tech uppercase">Hospitalidad & Turismo</span>
+                            <span class="text-[10px] text-slate-400 font-mono-tech">Sur de Chile</span>
                         </div>
                         <h4 class="text-base font-bold text-slate-950 mb-2">Centros Turísticos y Hoteles Sustentables</h4>
                         <p class="text-slate-600 text-xs font-light mb-4">
                             Diseño y coordinación de 3 proyectos hoteleros y centros turísticos sustentables, integrando visualización fotorrealista avanzada en D5 Render.
                         </p>
                     </div>
-                    <div class="border-t border-slate-100 pt-4 mt-4 grid grid-cols-2 gap-2 text-[10px] font-mono">
+                    <div class="border-t border-slate-100 pt-4 mt-4 grid grid-cols-2 gap-2 text-[10px] font-mono-tech">
                         <div>
                             <span class="text-slate-400 block uppercase">Render Engine</span>
                             <span class="text-sky-600 font-bold">D5 Render HD</span>
@@ -494,7 +570,7 @@
                         <svg class="w-8 h-8 text-slate-400 mx-auto mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="square" stroke-linejoin="miter" stroke-width="1.5" d="M12 4v16m8-8H4"></path>
                         </svg>
-                        <h4 class="text-sm font-bold text-slate-900 uppercase tracking-wider mb-2">¿Quieres evaluar vuestro activo?</h4>
+                        <h4 class="text-sm font-bold text-slate-900 uppercase tracking-wider mb-2">¿Quieres evaluar tu activo?</h4>
                         <p class="text-slate-500 text-xs font-light max-w-xs mx-auto">
                             Ingresa los datos de tu terreno o propiedad y realizamos un informe de cabida normativa y potencial de rentabilidad inicial.
                         </p>
@@ -509,7 +585,7 @@
     <section id="equipo" class="py-24 bg-white relative">
         <div class="max-w-7xl mx-auto px-6 lg:px-8">
             <div class="mb-16 text-center max-w-3xl mx-auto">
-                <span class="text-xs font-bold tracking-widest text-slate-500 uppercase font-mono block mb-2">¿Quiénes somos?</span>
+                <span class="text-xs font-bold tracking-widest text-slate-500 uppercase font-mono-tech block mb-2">¿Quiénes somos?</span>
                 <h2 class="text-3xl md:text-4xl font-black tracking-tight text-slate-900 mb-4">Un "par de arquitectos" de la USACH</h2>
                 <div class="w-16 h-1 bg-slate-950 mx-auto mb-6"></div>
                 <p class="text-slate-600 text-sm font-light leading-relaxed">
@@ -518,17 +594,17 @@
             </div>
 
             <div class="grid md:grid-cols-2 gap-12 max-w-5xl mx-auto">
-                <!-- Founder 1: Sebastián -->
+                <!-- Founder SV: Sebastián -->
                 <div class="bg-slate-50 border border-slate-200 p-8 flex flex-col justify-between hover:border-slate-300 transition-all">
                     <div>
                         <div class="flex items-center gap-4 mb-6">
-                            <div class="w-16 h-16 bg-slate-900 text-white flex items-center justify-center font-bold text-2xl font-mono relative">
+                            <div class="w-16 h-16 bg-slate-900 text-white flex items-center justify-center font-bold text-2xl font-mono-tech relative">
                                 SV
                                 <div class="absolute bottom-0 right-0 w-4 h-4 bg-sky-500"></div>
                             </div>
                             <div>
                                 <h3 class="text-lg font-bold text-slate-900 leading-tight">Sebastián M. Vera</h3>
-                                <p class="text-xs text-sky-600 font-mono font-semibold tracking-wider uppercase mt-1">Arquitecto Fundador & Director Técnico</p>
+                                <p class="text-xs text-sky-600 font-mono-tech font-semibold tracking-wider uppercase mt-1">Arquitecto Fundador & Director Técnico</p>
                             </div>
                         </div>
                         <p class="text-slate-600 text-xs font-light leading-relaxed mb-6">
@@ -537,10 +613,10 @@
                         <div class="space-y-3 border-t border-slate-200 pt-4">
                             <span class="text-[10px] font-bold text-slate-500 uppercase tracking-widest block mb-1">Especialidad Normativa:</span>
                             <div class="flex flex-wrap gap-2">
-                                <span class="px-2.5 py-1 bg-white border border-slate-200 text-slate-700 text-[10px] font-mono">Ley 20.234 (Saneamiento)</span>
-                                <span class="px-2.5 py-1 bg-white border border-slate-200 text-slate-700 text-[10px] font-mono">Ley 20.898 (Ley del Mono)</span>
-                                <span class="px-2.5 py-1 bg-white border border-slate-200 text-slate-700 text-[10px] font-mono">Exención Art. 5.6 OGUC</span>
-                                <span class="px-2.5 py-1 bg-white border border-slate-200 text-slate-700 text-[10px] font-mono">DFL 2 & LGUC</span>
+                                <span class="px-2.5 py-1 bg-white border border-slate-200 text-slate-700 text-[10px] font-mono-tech">Ley 20.234 (Saneamiento)</span>
+                                <span class="px-2.5 py-1 bg-white border border-slate-200 text-slate-700 text-[10px] font-mono-tech">Ley 20.898 (Ley del Mono)</span>
+                                <span class="px-2.5 py-1 bg-white border border-slate-200 text-slate-700 text-[10px] font-mono-tech">Exención Art. 5.6 OGUC</span>
+                                <span class="px-2.5 py-1 bg-white border border-slate-200 text-slate-700 text-[10px] font-mono-tech">DFL 2 & LGUC</span>
                             </div>
                         </div>
                     </div>
@@ -550,17 +626,17 @@
                     </div>
                 </div>
 
-                <!-- Founder 2: Adolfo -->
+                <!-- Founder AH: Adolfo -->
                 <div class="bg-slate-50 border border-slate-200 p-8 flex flex-col justify-between hover:border-slate-300 transition-all">
                     <div>
                         <div class="flex items-center gap-4 mb-6">
-                            <div class="w-16 h-16 bg-slate-900 text-white flex items-center justify-center font-bold text-2xl font-mono relative">
+                            <div class="w-16 h-16 bg-slate-900 text-white flex items-center justify-center font-bold text-2xl font-mono-tech relative">
                                 AH
                                 <div class="absolute bottom-0 right-0 w-4 h-4 bg-sky-500"></div>
                             </div>
                             <div>
                                 <h3 class="text-lg font-bold text-slate-900 leading-tight">Adolfo Henríquez Carvajal</h3>
-                                <p class="text-xs text-sky-600 font-mono font-semibold tracking-wider uppercase mt-1">Arquitecto & Director de Coordinación BIM</p>
+                                <p class="text-xs text-sky-600 font-mono-tech font-semibold tracking-wider uppercase mt-1">Arquitecto & Director de Coordinación BIM</p>
                             </div>
                         </div>
                         <p class="text-slate-600 text-xs font-light leading-relaxed mb-6">
@@ -569,10 +645,10 @@
                         <div class="space-y-3 border-t border-slate-200 pt-4">
                             <span class="text-[10px] font-bold text-slate-500 uppercase tracking-widest block mb-1">Especialidad Tecnológica:</span>
                             <div class="flex flex-wrap gap-2">
-                                <span class="px-2.5 py-1 bg-white border border-slate-200 text-slate-700 text-[10px] font-mono">ArchiCAD & Revit BIM</span>
-                                <span class="px-2.5 py-1 bg-white border border-slate-200 text-slate-700 text-[10px] font-mono">D5 Render HD</span>
-                                <span class="px-2.5 py-1 bg-white border border-slate-200 text-slate-700 text-[10px] font-mono">Planificación de Lotes</span>
-                                <span class="px-2.5 py-1 bg-white border border-slate-200 text-slate-700 text-[10px] font-mono">Coordinación Especialidades</span>
+                                <span class="px-2.5 py-1 bg-white border border-slate-200 text-slate-700 text-[10px] font-mono-tech">ArchiCAD & Revit BIM</span>
+                                <span class="px-2.5 py-1 bg-white border border-slate-200 text-slate-700 text-[10px] font-mono-tech">D5 Render HD</span>
+                                <span class="px-2.5 py-1 bg-white border border-slate-200 text-slate-700 text-[10px] font-mono-tech">Planificación de Lotes</span>
+                                <span class="px-2.5 py-1 bg-white border border-slate-200 text-slate-700 text-[10px] font-mono-tech">Coordinación Especialidades</span>
                             </div>
                         </div>
                     </div>
@@ -590,7 +666,7 @@
         <div class="max-w-7xl mx-auto px-6 lg:px-8">
             <div class="grid md:grid-cols-12 gap-8 items-center">
                 <div class="md:col-span-4">
-                    <p class="text-xs font-bold tracking-widest text-sky-400 uppercase font-mono mb-2">Rango Operativo</p>
+                    <p class="text-xs font-bold tracking-widest text-sky-400 uppercase font-mono-tech mb-2">Rango Operativo</p>
                     <h3 class="text-2xl font-black tracking-tight mb-4">Presencia y Cobertura Directa</h3>
                     <p class="text-slate-400 text-xs font-light leading-relaxed">
                         Desarrollamos nuestras operaciones de manera presencial y digital en las comunas estratégicas de la zona central de Chile, garantizando rapidez en las gestiones municipales locales.
@@ -598,14 +674,14 @@
                 </div>
                 <div class="md:col-span-8 grid sm:grid-cols-2 gap-4">
                     <div class="bg-slate-900/40 p-6 border border-slate-800">
-                        <span class="block text-sky-400 font-mono text-xs font-bold mb-2">Región Metropolitana</span>
+                        <span class="block text-sky-400 font-mono-tech text-xs font-bold mb-2">Región Metropolitana</span>
                         <h4 class="text-white font-bold mb-3">RM Completa</h4>
                         <p class="text-slate-400 text-xs font-light leading-relaxed">
                             Peñaflor, San Bernardo, El Bosque, Paine, Puente Alto, Lo Espejo, Santiago Centro y alrededores.
                         </p>
                     </div>
                     <div class="bg-slate-900/40 p-6 border border-slate-800">
-                        <span class="block text-sky-400 font-mono text-xs font-bold mb-2">Región de Valparaíso</span>
+                        <span class="block text-sky-400 font-mono-tech text-xs font-bold mb-2">Región de Valparaíso</span>
                         <h4 class="text-white font-bold mb-3">V Región</h4>
                         <p class="text-slate-400 text-xs font-light leading-relaxed">
                             Valparaíso, Viña del Mar, Quilpué, Villa Alemana, Concón y áreas aledañas.
@@ -619,60 +695,60 @@
     <!-- Contacto / Plan Impulso (Conectado a Web3Forms) -->
     <section id="contacto" class="py-24 bg-white border-t border-slate-200 relative">
         <div class="max-w-4xl mx-auto px-6 lg:px-8 text-center">
-            <span class="text-xs font-bold tracking-widest text-slate-500 uppercase font-mono block mb-2">Consultoría Sin Costo Inicial</span>
-            <h2 class="text-3xl md:text-4xl font-black tracking-tight text-slate-900 mb-4">Inicia tu Plan Impulso Comercial</h2>
+            <span class="text-xs font-bold tracking-widest text-slate-500 uppercase font-mono-tech block mb-2">Consultoría Sin Costo Inicial</span>
+            <h2 class="text-3xl md:text-4xl font-black tracking-tight text-slate-900 mb-4">Inicia tu Plan Impulso Comercial / PPP</h2>
             <p class="text-base text-slate-600 font-light mb-12 max-w-2xl mx-auto">
-                Cuéntanos sobre vuestra propiedad o cartera de activos estancados. Sebastián y Adolfo evaluarán los antecedentes normativos e hipótesis de diseño preliminares.
+                Cuéntanos sobre tu propiedad o cartera de activos estancados. Sebastián y Adolfo evaluarán los antecedentes normativos e hipótesis de diseño preliminares de tu primer caso piloto.
             </p>
             
             <form id="contact-form" class="text-left bg-slate-50 p-8 border border-slate-200 shadow-sm max-w-2xl mx-auto">
-                <!-- LLAVE DE WEB3FORMS (Reemplaza con tu clave final de Web3Forms) -->
+                <!-- LLAVE DE WEB3FORMS -->
                 <input type="hidden" name="access_key" value="e490e5d7-70f1-4840-95e6-b4c4a9084d18">
                 
                 <!-- Opciones de Personalización para la Notificación -->
-                <input type="hidden" name="subject" value="Nuevo Lead de PARDE - Plan Impulso">
+                <input type="hidden" name="subject" value="Nuevo Lead de PARDE - Plan Impulso / PPP">
                 <input type="hidden" name="from_name" value="Web de PARDE">
                 
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
                     <div>
                         <label for="nombre" class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-2">Nombre Completo *</label>
-                        <input type="text" id="nombre" name="nombre" required class="w-full px-4 py-3 bg-white border border-slate-300 focus:outline-none focus:border-slate-900 focus:ring-1 focus:ring-slate-900 transition-colors text-xs font-mono" placeholder="Ej. Juan Pérez">
+                        <input type="text" id="nombre" name="nombre" required class="w-full px-4 py-3 bg-white border border-slate-300 focus:outline-none focus:border-slate-900 focus:ring-1 focus:ring-slate-900 transition-colors text-xs font-mono-tech" placeholder="Ej. Juan Pérez">
                     </div>
                     <div>
                         <label for="empresa" class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-2">Empresa / Corredora</label>
-                        <input type="text" id="empresa" name="empresa" class="w-full px-4 py-3 bg-white border border-slate-300 focus:outline-none focus:border-slate-900 focus:ring-1 focus:ring-slate-900 transition-colors text-xs font-mono" placeholder="Ej. Propiedades Santiago">
+                        <input type="text" id="empresa" name="empresa" class="w-full px-4 py-3 bg-white border border-slate-300 focus:outline-none focus:border-slate-900 focus:ring-1 focus:ring-slate-900 transition-colors text-xs font-mono-tech" placeholder="Ej. Propiedades Santiago">
                     </div>
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
                     <div>
                         <label for="email" class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-2">Correo electrónico *</label>
-                        <input type="email" id="email" name="email" required class="w-full px-4 py-3 bg-white border border-slate-300 focus:outline-none focus:border-slate-900 focus:ring-1 focus:ring-slate-900 transition-colors text-xs font-mono" placeholder="ejemplo@empresa.cl">
+                        <input type="email" id="email" name="email" required class="w-full px-4 py-3 bg-white border border-slate-300 focus:outline-none focus:border-slate-900 focus:ring-1 focus:ring-slate-900 transition-colors text-xs font-mono-tech" placeholder="ejemplo@empresa.cl">
                     </div>
                     <div>
                         <label for="tel" class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-2">Teléfono de Contacto *</label>
-                        <input type="tel" id="tel" name="telefono" required class="w-full px-4 py-3 bg-white border border-slate-300 focus:outline-none focus:border-slate-900 focus:ring-1 focus:ring-slate-900 transition-colors text-xs font-mono" placeholder="Ej. +56 9 1234 5678">
+                        <input type="tel" id="tel" name="telefono" required class="w-full px-4 py-3 bg-white border border-slate-300 focus:outline-none focus:border-slate-900 focus:ring-1 focus:ring-slate-900 transition-colors text-xs font-mono-tech" placeholder="Ej. +56 9 1234 5678">
                     </div>
                 </div>
                 <div class="mb-6">
-                    <label for="tipo_proyecto" class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-2">Servicio de Interés</label>
-                    <select id="tipo_proyecto" name="servicio_interes" class="w-full px-4 py-3 bg-white border border-slate-300 focus:outline-none focus:border-slate-900 focus:ring-1 focus:ring-slate-900 transition-colors text-xs font-mono">
+                    <label for="tipo_proyecto" class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-2">Servicio de Interés / Plan</label>
+                    <select id="tipo_proyecto" name="servicio_interes" class="w-full px-4 py-3 bg-white border border-slate-300 focus:outline-none focus:border-slate-900 focus:ring-1 focus:ring-slate-900 transition-colors text-xs font-mono-tech">
+                        <option value="Postulacion Plan Piloto 0 CLP">Postulación: Programa de Proyectos Piloto (PPP 2026 - Costo 0 Inicial)</option>
                         <option value="Cabida y Viabilidad">Estudio de Cabida y Viabilidad de Terrenos</option>
                         <option value="Regularizacion Viviendas">Regularización de Viviendas (Ley 20.898 / DFL 2)</option>
                         <option value="Saneamiento Subdivisiones">Saneamiento y Subdivisiones (Ley 20.234)</option>
                         <option value="BIM y Visualizacion 3D">Modelado BIM y Visualizaciones 3D para Ventas</option>
-                        <option value="Consultoria DOM">Otro trámite DOM / Consultoría Integral</option>
                     </select>
                 </div>
                 <div class="mb-8">
-                    <label for="mensaje" class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-2">Detalles del Activo / Comuna y Problemática Actual</label>
-                    <textarea id="mensaje" name="detalles_activo" rows="4" class="w-full px-4 py-3 bg-white border border-slate-300 focus:outline-none focus:border-slate-900 focus:ring-1 focus:ring-slate-900 transition-colors text-xs font-mono" placeholder="Indique comuna, m2 de terreno o si posee alguna observación de la DOM previa..."></textarea>
+                    <label for="mensaje" class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-2">Detalles del Activo / Comuna, ROL, CIP y Problemática Actual</label>
+                    <textarea id="mensaje" name="detalles_activo" rows="4" class="w-full px-4 py-3 bg-white border border-slate-300 focus:outline-none focus:border-slate-900 focus:ring-1 focus:ring-slate-900 transition-colors text-xs font-mono-tech" placeholder="Indique comuna, ROL de avalúo, si cuenta con CIP y los metros cuadrados aproximados..."></textarea>
                 </div>
-                <button type="submit" id="btn-submit" class="w-full py-4 bg-slate-900 text-white text-xs font-bold tracking-wider hover:bg-slate-800 transition-colors uppercase font-mono">
-                    Solicitar Diagnóstico Técnico
+                <button type="submit" id="btn-submit" class="w-full py-4 bg-slate-900 text-white text-xs font-bold tracking-wider hover:bg-slate-800 transition-colors uppercase font-mono-tech">
+                    Solicitar Diagnóstico Técnico / Postular PPP
                 </button>
 
-                <!-- Status Feedback Message Box (Pasa de gris a verde o rojo dinámicamente) -->
-                <div id="success-msg" class="hidden mt-4 p-4 border text-xs font-mono transition-all duration-300"></div>
+                <!-- Status Feedback Message Box -->
+                <div id="success-msg" class="hidden mt-4 p-4 border text-xs font-mono-tech transition-all duration-300"></div>
             </form>
         </div>
     </section>
@@ -691,8 +767,8 @@
                     </p>
                 </div>
                 <div class="md:col-span-4 space-y-3 text-xs">
-                    <h4 class="text-white font-bold uppercase tracking-wider text-[10px] font-mono">Contacto Directo</h4>
-                    <ul class="space-y-2 font-mono text-[11px] text-slate-400">
+                    <h4 class="text-white font-bold uppercase tracking-wider text-[10px] font-mono-tech">Contacto Directo</h4>
+                    <ul class="space-y-2 font-mono-tech text-[11px] text-slate-400">
                         <li>Sebastián: +56 9 5019 6861</li>
                         <li>Adolfo: +56 9 7108 9393</li>
                         <li>Email: roer.arquitectura@gmail.com</li>
@@ -701,7 +777,7 @@
                     </ul>
                 </div>
                 <div class="md:col-span-4 space-y-3 text-xs">
-                    <h4 class="text-white font-bold uppercase tracking-wider text-[10px] font-mono">Rigor de Fundación Académica</h4>
+                    <h4 class="text-white font-bold uppercase tracking-wider text-[10px] font-mono-tech">Rigor de Fundación Académica</h4>
                     <p class="text-xs text-slate-500 font-light">
                         Estudio fundado por arquitectos titulados de la Universidad de Santiago de Chile (USACH). Rigor técnico, ética profesional y resolutividad municipal en cada expediente.
                     </p>
@@ -726,7 +802,7 @@
             <div class="flex items-center justify-between border-b border-slate-100 pb-3 mb-4">
                 <div class="flex items-center gap-2">
                     <div class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></div>
-                    <span class="text-[10px] font-bold tracking-widest text-slate-500 uppercase font-mono">Contacto Técnico Express</span>
+                    <span class="text-[10px] font-bold tracking-widest text-slate-500 uppercase font-mono-tech">Contacto Técnico Express</span>
                 </div>
                 <button onclick="toggleWA()" class="text-slate-400 hover:text-slate-950 transition-colors">
                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -744,25 +820,25 @@
             <div class="space-y-3">
                 <!-- Option 1: Sebastian -->
                 <a href="https://wa.me/56950196861?text=Hola%20Sebasti%C3%A1n,%20vi%20la%20p%C3%A1gina%20de%20PARDE%20y%20me%20gustar%C3%ADa%20hacer%20una%20consulta%20normativa..." target="_blank" class="flex items-center gap-3 p-3 bg-slate-50 hover:bg-slate-100 transition-all border border-slate-200/80 group">
-                    <div class="w-10 h-10 bg-slate-950 text-white flex items-center justify-center font-bold text-xs font-mono relative shrink-0">
+                    <div class="w-10 h-10 bg-slate-950 text-white flex items-center justify-center font-bold text-xs font-mono-tech relative shrink-0">
                         SV
                         <div class="absolute bottom-0 right-0 w-3 h-3 bg-emerald-500 border border-white rounded-full"></div>
                     </div>
                     <div class="text-left">
                         <span class="block font-bold text-xs text-slate-950 leading-tight group-hover:text-sky-600 transition-colors">Sebastián M. Vera</span>
-                        <span class="text-[9px] text-slate-400 uppercase font-mono">Director Técnico • DOM & Normativa</span>
+                        <span class="text-[9px] text-slate-400 uppercase font-mono-tech">Director Técnico • DOM & Normativa</span>
                     </div>
                 </a>
 
                 <!-- Option 2: Adolfo -->
                 <a href="https://wa.me/56971089393?text=Hola%20Adolfo,%20vi%20la%20p%C3%A1gina%20de%20PARDE%20y%20me%20gustar%C3%ADa%20hacer%20una%20consulta%20BIM..." target="_blank" class="flex items-center gap-3 p-3 bg-slate-50 hover:bg-slate-100 transition-all border border-slate-200/80 group">
-                    <div class="w-10 h-10 bg-slate-950 text-white flex items-center justify-center font-bold text-xs font-mono relative shrink-0">
+                    <div class="w-10 h-10 bg-slate-950 text-white flex items-center justify-center font-bold text-xs font-mono-tech relative shrink-0">
                         AH
                         <div class="absolute bottom-0 right-0 w-3 h-3 bg-emerald-500 border border-white rounded-full"></div>
                     </div>
                     <div class="text-left">
                         <span class="block font-bold text-xs text-slate-950 leading-tight group-hover:text-sky-600 transition-colors">Adolfo Henríquez C.</span>
-                        <span class="text-[9px] text-slate-400 uppercase font-mono">Director BIM • Visualización & 3D</span>
+                        <span class="text-[9px] text-slate-400 uppercase font-mono-tech">Director BIM • Visualización & 3D</span>
                     </div>
                 </a>
             </div>
@@ -774,7 +850,7 @@
                 <path d="M12.012 2c-5.506 0-9.989 4.478-9.99 9.984a9.96 9.96 0 001.37 5.011L2 22l5.189-1.359a9.927 9.927 0 004.819 1.239h.004c5.507 0 9.99-4.478 9.99-10.004A9.973 9.973 0 0012.012 2zm5.836 14.199c-.24.674-1.398 1.285-1.921 1.365-.47.072-.976.113-2.61-.532-2.101-.827-3.41-2.962-3.513-3.102-.103-.139-.838-1.113-.838-2.124 0-1.01.528-1.507.717-1.713.19-.205.413-.257.551-.257.137 0 .275.001.395.007.124.006.29-.047.452.342.166.4.568 1.385.617 1.485.05.1.083.217.017.35-.067.133-.1.217-.2.333-.1.117-.21.261-.3.35-.1.1-.205.21-.088.411.117.2.52 1.157 1.114 1.684.767.68 1.411.89 1.611.99.2.1.317.083.434-.05.117-.133.5-.584.633-.784.133-.2.267-.166.452-.1.185.067 1.18.557 1.382.658.201.101.334.15.384.234.05.084.05.488-.19.162z"/>
             </svg>
             <!-- Badge alert of active connection -->
-            <span class="absolute -top-1.5 -right-1.5 w-5 h-5 bg-rose-500 text-white rounded-full text-[9px] flex items-center justify-center font-bold font-mono shadow-md">2</span>
+            <span class="absolute -top-1.5 -right-1.5 w-5 h-5 bg-rose-500 text-white rounded-full text-[9px] flex items-center justify-center font-bold font-mono-tech shadow-md">2</span>
         </button>
     </div>
 
@@ -841,6 +917,325 @@
             }
         }
 
+        // --- PDF GENERATOR (High-Fidelity Document Builder) ---
+        function downloadPilotPDF() {
+            const { jsPDF } = window.jspdf;
+            const doc = new jsPDF('p', 'mm', 'a4');
+            
+            // Palette Colors
+            const cDark = '#0f172a';      // Slate 900
+            const cSky = '#0ea5e9';       // Sky 500
+            const cGray = '#475569';      // Slate 600
+            const cLight = '#f8fafc';     // Slate 50
+            const cBorder = '#cbd5e1';    // Slate 300
+            
+            // Helper: Draw elegant header on each page
+            const drawHeader = (pageNum) => {
+                // Top accent bar
+                doc.setFillColor(15, 23, 42); // cDark
+                doc.rect(0, 0, 210, 15, 'F');
+                doc.setFillColor(14, 165, 233); // cSky
+                doc.rect(0, 15, 210, 1.5, 'F');
+                
+                // Header Text
+                doc.setTextColor(255, 255, 255);
+                doc.setFont("Helvetica", "bold");
+                doc.setFontSize(9);
+                doc.text("P//  PARDE ARQUITECTURA TÉCNICA & GESTIÓN BIM", 15, 9.5);
+                
+                doc.setFont("Helvetica", "normal");
+                doc.setFontSize(8);
+                doc.text("PROGRAMA DE PROYECTOS PILOTO (PPP 2026)", 195, 9.5, { align: 'right' });
+            };
+
+            // Helper: Draw elegant footer on each page
+            const drawFooter = (pageNum, totalPages) => {
+                // Bottom accent bar
+                doc.setFillColor(226, 232, 240);
+                doc.rect(0, 282, 210, 0.5, 'F');
+                
+                doc.setTextColor(100, 116, 139);
+                doc.setFont("Helvetica", "normal");
+                doc.setFontSize(7.5);
+                doc.text("Contacto: roer.arquitectura@gmail.com  |  Santiago & Valparaíso", 15, 289);
+                doc.text(`Página ${pageNum} de ${totalPages}`, 195, 289, { align: 'right' });
+            };
+
+            // --- PAGE 1 ---
+            drawHeader(1);
+            
+            // Document Title Block
+            doc.setFillColor(241, 245, 249);
+            doc.rect(15, 28, 180, 42, 'F');
+            doc.setDrawColor(203, 213, 225);
+            doc.rect(15, 28, 180, 42, 'S');
+            
+            doc.setTextColor(15, 23, 42);
+            doc.setFont("Helvetica", "bold");
+            doc.setFontSize(18);
+            doc.text("PROGRAMA DE PROYECTOS PILOTO", 20, 39);
+            doc.setFontSize(14);
+            doc.setTextColor(14, 165, 233);
+            doc.text("PPP 2026", 20, 47);
+            
+            doc.setFont("Helvetica", "normal");
+            doc.setFontSize(10);
+            doc.setTextColor(71, 85, 105);
+            doc.text("Certeza Técnica y Modelado BIM Sin Costo de Desarrollo Inicial para tu Cartera", 20, 56);
+            doc.setFont("Helvetica", "bold");
+            doc.setTextColor(15, 23, 42);
+            doc.text("DIRIGIDO A: Corredoras de Propiedades e Inversionistas Inmobiliarios", 20, 63);
+            
+            // Introduction section
+            doc.setFont("Helvetica", "bold");
+            doc.setFontSize(11);
+            doc.setTextColor(15, 23, 42);
+            doc.text("EL DESAFÍO COMERCIAL", 15, 83);
+            
+            // Section line
+            doc.setDrawColor(14, 165, 233);
+            doc.line(15, 85, 60, 85);
+            
+            doc.setFont("Helvetica", "normal");
+            doc.setFontSize(9.5);
+            doc.setTextColor(51, 65, 85);
+            
+            let introText = "El mayor obstáculo al vender un terreno o propiedad compleja es la incertidumbre. Los compradores dudan de la edificabilidad, los tasadores castigan el precio y las direcciones de obras municipales (DOM) dilatan las aprobaciones, estancando comisiones valiosas.";
+            let splitIntro = doc.splitTextToSize(introText, 180);
+            doc.text(splitIntro, 15, 91);
+            
+            // Section 1
+            doc.setFont("Helvetica", "bold");
+            doc.setFontSize(11);
+            doc.setTextColor(15, 23, 42);
+            doc.text("1. ¿QUÉ ES EL PROGRAMA DE PROYECTOS PILOTO (PPP)?", 15, 114);
+            doc.line(15, 116, 120, 116);
+            
+            doc.setFont("Helvetica", "normal");
+            doc.setFontSize(9.5);
+            doc.setTextColor(51, 65, 85);
+            
+            let p1Text = "El Programa de Proyectos Piloto es una iniciativa exclusiva de PARDE diseñada para corredoras de propiedades locales, oficinas de gestión y desarrolladores inmobiliarios de la Región Metropolitana y la Región de Valparaíso.\n\n" +
+                         "Seleccionamos un activo de su cartera actual que esté estancado, sea normativamente complejo o tenga un alto valor potencial, y le aplicamos nuestra ingeniería técnica de vanguardia a costo 0 CLP para vuestra oficina.\n\n" +
+                         "El objetivo es simple: Demostrarles en un caso real, en menos de 5 días hábiles y sin ningún riesgo financiero para ustedes, cómo la unión de la precisión normativa de la Universidad de Santiago de Chile (USACH) y el modelado BIM de alta fidelidad puede destrabar vuestras comisiones de venta de forma transparente y acelerada.";
+            
+            let splitP1 = doc.splitTextToSize(p1Text, 180);
+            doc.text(splitP1, 15, 122);
+            
+            // Section 2
+            doc.setFont("Helvetica", "bold");
+            doc.setFontSize(11);
+            doc.setTextColor(15, 23, 42);
+            doc.text("2. EL PASO A PASO DE LA METODOLOGÍA", 15, 178);
+            doc.line(15, 180, 95, 180);
+            
+            let p2IntroText = "Para asegurar la máxima rigurosidad y velocidad del entregable, estructuramos el piloto bajo cuatro fases técnicas sumamente claras:";
+            let splitP2Intro = doc.splitTextToSize(p2IntroText, 180);
+            doc.setFont("Helvetica", "normal");
+            doc.text(splitP2Intro, 15, 186);
+            
+            // Timeline Bullet steps
+            const drawBullet = (stepNum, title, desc, yPos) => {
+                doc.setFillColor(15, 23, 42);
+                doc.rect(15, yPos, 8, 8, 'F');
+                doc.setTextColor(255, 255, 255);
+                doc.setFont("Helvetica", "bold");
+                doc.setFontSize(7.5);
+                doc.text(stepNum, 19, yPos + 5.5, { align: 'center' });
+                
+                doc.setTextColor(15, 23, 42);
+                doc.setFontSize(9.5);
+                doc.text(title, 27, yPos + 6);
+                
+                doc.setFont("Helvetica", "normal");
+                doc.setFontSize(9);
+                doc.setTextColor(71, 85, 105);
+                let splitDesc = doc.splitTextToSize(desc, 168);
+                doc.text(splitDesc, 27, yPos + 11);
+            };
+            
+            drawBullet("01", "FASE DE SELECCIÓN", "Vuestra oficina nos entrega los datos básicos de un activo desafiante en cartera (Rol de avalúo, dirección o Certificado de Informaciones Previas).", 198);
+            drawBullet("02", "DIAGNÓSTICO NORMATIVO (FOCO DOM)", "Analizamos de forma exhaustiva las restricciones del Plan Regulador Comunal, coeficientes de constructibilidad, y la aplicabilidad de exenciones técnicas como el Art. 5.6 de la OGUC.", 222);
+            
+            drawFooter(1, 3);
+            
+            // --- PAGE 2 ---
+            doc.addPage();
+            drawHeader(2);
+            
+            // Continue Section 2 Bullets
+            drawBullet("03", "MODELADO Y OPTIMIZACIÓN DE CABIDA (FOCO BIM)", "Modelamos volumétricamente el terreno en tres dimensiones para proyectar la ocupación máxima permitida y resolver la incidencia de las rasantes (Art. 2.6.3 de la OGUC) con ángulos de proyección real de 70 o 60 grados.", 25);
+            drawBullet("04", "ENTREGA DE DOSSIER DE CERTEZA", "Compilamos el análisis en un dossier comercial de alto estándar listo para ser presentado por vuestros ejecutivos de venta a clientes e inversionistas interesados.", 50);
+            
+            // Section 3
+            doc.setFont("Helvetica", "bold");
+            doc.setFontSize(11);
+            doc.setTextColor(15, 23, 42);
+            doc.text("3. ENTREGABLES DEL PILOTO (¿QUÉ RECIBEN EXACTAMENTE?)", 15, 83);
+            doc.line(15, 85, 132, 85);
+            
+            doc.setFont("Helvetica", "normal");
+            doc.setFontSize(9.5);
+            doc.setTextColor(51, 65, 85);
+            let deliverablesIntro = "Al finalizar el proceso, vuestra oficina recibirá de manera digital un Dossier Técnico-Comercial de alta definición que incluye:";
+            doc.text(doc.splitTextToSize(deliverablesIntro, 180), 15, 91);
+            
+            // Deliverables list (Bullet list with design checkmarks)
+            const drawCheck = (title, desc, yPos) => {
+                doc.setDrawColor(14, 165, 233);
+                doc.setLineWidth(0.4);
+                doc.line(16, yPos + 2, 18, yPos + 4);
+                doc.line(18, yPos + 4, 22, yPos);
+                
+                doc.setFont("Helvetica", "bold");
+                doc.setFontSize(9.5);
+                doc.setTextColor(15, 23, 42);
+                doc.text(title, 26, yPos + 3);
+                
+                doc.setFont("Helvetica", "normal");
+                doc.setFontSize(9);
+                doc.setTextColor(71, 85, 105);
+                let splitText = doc.splitTextToSize(desc, 168);
+                doc.text(splitText, 26, yPos + 8);
+            };
+            
+            drawCheck("Informe de Viabilidad Normativa:", "Desglose legal claro del potencial real del terreno, identificando factibilidades de subdivisiones prediales bajo la Ley 20.234 o saneamientos habitacionales (Ley 20.898).", 101);
+            drawCheck("Esquema Volumétrico 3D:", "Un plano tridimensional limpio y profesional desarrollado por nuestro equipo en ArchiCAD/Revit que traduce las complejas normas de la CIP en un volumen arquitectónico visible y entendible para no-arquitectos.", 121);
+            drawCheck("Mitigación de Riesgos DOM:", "Identificación temprana de observaciones críticas (ensanches viales, servidumbres, problemas de absorción o factibilidades sanitarias) para que vuestra promesa de compraventa no rebote en las notarías.", 141);
+            
+            // Section 4
+            doc.setFont("Helvetica", "bold");
+            doc.setFontSize(11);
+            doc.setTextColor(15, 23, 42);
+            doc.text("4. REQUISITOS PARA POSTULAR UN ACTIVO AL PILOTO", 15, 175);
+            doc.line(15, 177, 115, 177);
+            
+            // Grey box for eligibility
+            doc.setFillColor(248, 250, 252);
+            doc.rect(15, 183, 180, 48, 'F');
+            doc.setDrawColor(226, 232, 240);
+            doc.rect(15, 183, 180, 48, 'S');
+            
+            doc.setTextColor(15, 23, 42);
+            doc.setFont("Helvetica", "bold");
+            doc.setFontSize(9.5);
+            doc.text("CRITERIOS DE ELEGIBILIDAD TÉCNICA", 20, 191);
+            
+            doc.setFont("Helvetica", "normal");
+            doc.setFontSize(9);
+            doc.setTextColor(51, 65, 85);
+            
+            let criteriaText = "• Tipología de Activo: Que sea un terreno urbano, terreno rural subdividible (superficie mínima 5.000 m2) o una propiedad residencial/comercial con ampliaciones complejas estancadas en la DOM.\n\n" +
+                               "• Representación Directa: Que vuestra corredora u oficina técnica cuente con la representación directa o exclusividad del activo para asegurar la transparencia de las gestiones.\n\n" +
+                               "• Antecedentes: Tener a disposición el número de Rol de avalúo y, idealmente, el Certificado de Informaciones Previas (CIP) vigente de la propiedad a evaluar.";
+            doc.text(doc.splitTextToSize(criteriaText, 170), 20, 198);
+            
+            // Section 5
+            doc.setFont("Helvetica", "bold");
+            doc.setFontSize(11);
+            doc.setTextColor(15, 23, 42);
+            doc.text("5. ¿POR QUÉ HACEMOS ESTO? (LA ALIANZA A LARGO PLAZO)", 15, 244);
+            doc.line(15, 246, 128, 246);
+            
+            doc.setFont("Helvetica", "normal");
+            doc.setFontSize(9.5);
+            doc.setTextColor(51, 65, 85);
+            let allianceText = "Hacemos esta inversión de tiempo y recursos técnicos porque creemos en las relaciones de beneficio mutuo:\n" +
+                               "• Si el piloto no destraba la propiedad: No nos deben absolutamente nada. Vuestra oficina se queda con el dossier técnico desarrollado sin ningún tipo de cobro ni compromiso posterior.\n" +
+                               "• Si el piloto les ayuda a cerrar la venta: Consolidamos una alianza comercial permanente. En vuestros futuros negocios de la cartera, estructuraremos los honorarios de arquitectura integrados.";
+            doc.text(doc.splitTextToSize(allianceText, 180), 15, 252);
+            
+            drawFooter(2, 3);
+            
+            // --- PAGE 3 ---
+            doc.addPage();
+            drawHeader(3);
+            
+            // Call to action title block
+            doc.setFillColor(15, 23, 42);
+            doc.rect(15, 30, 180, 130, 'F');
+            
+            doc.setTextColor(255, 255, 255);
+            doc.setFont("Helvetica", "bold");
+            doc.setFontSize(16);
+            doc.text("¿EVALUAMOS EL PRIMER ACTIVO", 25, 48);
+            doc.text("DE TU CARTERA ESTA SEMANA?", 25, 56);
+            
+            doc.setFillColor(14, 165, 233); // cSky
+            doc.rect(25, 62, 35, 1.5, 'F');
+            
+            doc.setFont("Helvetica", "normal");
+            doc.setFontSize(10.5);
+            doc.setTextColor(203, 213, 225);
+            let contactIntro = "Ponte en contacto de manera directa con nuestro equipo directivo de la Universidad de Santiago de Chile (USACH) para coordinar el diagnóstico inicial del caso piloto y resolver cualquier duda municipal o espacial en un plazo máximo de 48 horas hábiles.";
+            doc.text(doc.splitTextToSize(contactIntro, 160), 25, 72);
+            
+            // Contacts visual cards in page 3
+            doc.setFillColor(30, 41, 59);
+            doc.rect(25, 96, 160, 24, 'F');
+            doc.setTextColor(255, 255, 255);
+            doc.setFont("Helvetica", "bold");
+            doc.setFontSize(10.5);
+            doc.text("Sebastián M. Vera", 32, 105);
+            doc.setFont("Helvetica", "normal");
+            doc.setFontSize(9.5);
+            doc.setTextColor(14, 165, 233);
+            doc.text("Área Técnica, Regularizaciones & Trámites DOM  |  +56 9 5019 6861", 32, 112);
+            
+            doc.setFillColor(30, 41, 59);
+            doc.rect(25, 126, 160, 24, 'F');
+            doc.setTextColor(255, 255, 255);
+            doc.setFont("Helvetica", "bold");
+            doc.setFontSize(10.5);
+            doc.text("Adolfo Henríquez C.", 32, 135);
+            doc.setFont("Helvetica", "normal");
+            doc.setFontSize(9.5);
+            doc.setTextColor(14, 165, 233);
+            doc.text("Dirección BIM, Modelado 3D & Visualización D5  |  +56 9 7108 9393", 32, 142);
+            
+            // Channels
+            doc.setTextColor(15, 23, 42);
+            doc.setFont("Helvetica", "bold");
+            doc.setFontSize(11);
+            doc.text("CANALES CENTRALIZADOS DE ATENCIÓN", 15, 178);
+            doc.line(15, 180, 95, 180);
+            
+            doc.setFont("Helvetica", "normal");
+            doc.setFontSize(10);
+            doc.setTextColor(51, 65, 85);
+            doc.text("• Correo Institucional: roer.arquitectura@gmail.com", 20, 190);
+            doc.text("• Sitio Web Oficial: estudioroer.github.io/PARDE/", 20, 197);
+            doc.text("• Cobertura Directa: Región Metropolitana & Región de Valparaíso, Chile", 20, 204);
+            
+            // Bottom seal box
+            doc.setFillColor(241, 245, 249);
+            doc.rect(15, 220, 180, 40, 'F');
+            doc.setDrawColor(203, 213, 225);
+            doc.rect(15, 220, 180, 40, 'S');
+            
+            // Logo watermark design in pdf
+            doc.setFillColor(15, 23, 42);
+            doc.rect(22, 227, 10, 10, 'F');
+            doc.setTextColor(255, 255, 255);
+            doc.setFont("Helvetica", "bold");
+            doc.setFontSize(7.5);
+            doc.text("P//", 27, 233.5, { align: 'center' });
+            
+            doc.setTextColor(15, 23, 42);
+            doc.setFontSize(10);
+            doc.text("PARDE ARQUITECTURA TÉCNICA INMOBILIARIA", 36, 232);
+            doc.setFont("Helvetica", "normal");
+            doc.setFontSize(8.5);
+            doc.setTextColor(100, 116, 139);
+            doc.text("Compromiso, ética pública y precisión milimétrica bajo herencia formativa USACH.", 36, 238);
+            doc.text("Ofrecido para toda la comunidad inmobiliaria de la zona centro del país en el periodo 2026.", 36, 243);
+            
+            drawFooter(3, 3);
+            
+            // Download PDF File action
+            doc.save("Propuesta_Proyecto_Piloto_PARDE_2026.pdf");
+        }
+
         // --- WEB3FORMS AJAX INTEGRATION ---
         const form = document.getElementById('contact-form');
         const successMsg = document.getElementById('success-msg');
@@ -849,9 +1244,9 @@
         form.addEventListener('submit', function(e) {
             e.preventDefault();
             
-            // 1. Mostrar estado de carga en la caja de alerta
+            // 1. Mostrar estado de carga
             successMsg.textContent = "Procesando vuestra solicitud y enviando diagnóstico...";
-            successMsg.className = "mt-4 p-4 bg-slate-100 border border-slate-300 text-slate-700 text-xs font-mono block";
+            successMsg.className = "mt-4 p-4 bg-slate-100 border border-slate-300 text-slate-700 text-xs font-mono-tech block animate-pulse";
             btnSubmit.disabled = true;
             btnSubmit.classList.add('opacity-50', 'cursor-not-allowed');
 
@@ -872,21 +1267,21 @@
                 let resJson = await response.json();
                 if (response.status === 200) {
                     // Éxito: Modificar estilos a color esmeralda y limpiar formulario
-                    successMsg.textContent = "¡Formulario enviado con éxito! El par de arquitectos de PARDE se pondrán en contacto contigo en un plazo de 24 horas hábiles.";
-                    successMsg.className = "mt-4 p-4 bg-emerald-50 border border-emerald-300 text-emerald-800 text-xs font-mono block";
+                    successMsg.textContent = "¡Formulario enviado con éxito! El par de arquitectos de PARDE se pondrán en contacto contigo en un plazo de 24 horas hábiles para coordinar el caso piloto.";
+                    successMsg.className = "mt-4 p-4 bg-emerald-50 border border-emerald-300 text-emerald-800 text-xs font-mono-tech block";
                     form.reset();
                 } else {
-                    // Error de Servidor de Web3forms (p. ej. Access Key inválido)
+                    // Error de Servidor de Web3forms
                     console.error(response);
                     successMsg.textContent = "Error del sistema: " + (resJson.message || "No se pudo conectar con el servidor de correo. Por favor, escríbenos directamente a roer.arquitectura@gmail.com.");
-                    successMsg.className = "mt-4 p-4 bg-rose-50 border border-rose-300 text-rose-800 text-xs font-mono block";
+                    successMsg.className = "mt-4 p-4 bg-rose-50 border border-rose-300 text-rose-800 text-xs font-mono-tech block";
                 }
             })
             .catch(error => {
-                // Error de red (sin conexión, bloqueo de adblocker, etc)
+                // Error de red
                 console.error(error);
                 successMsg.textContent = "Error de conexión. Revisa tu internet o envía los datos directamente a roer.arquitectura@gmail.com.";
-                successMsg.className = "mt-4 p-4 bg-rose-50 border border-rose-300 text-rose-800 text-xs font-mono block";
+                successMsg.className = "mt-4 p-4 bg-rose-50 border border-rose-300 text-rose-800 text-xs font-mono-tech block";
             })
             .finally(() => {
                 // Reactivar botón de envío
