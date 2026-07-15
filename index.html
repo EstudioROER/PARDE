@@ -53,7 +53,6 @@
 
     <!-- Hero Section -->
     <section class="relative pt-32 pb-20 overflow-hidden bg-white">
-        <!-- Blueprint Grid Backdrop Softened -->
         <div class="absolute inset-0 bg-[linear-gradient(to_right,#f1f5f9_1px,transparent_1px),linear-gradient(to_bottom,#f1f5f9_1px,transparent_1px)] bg-[size:3rem_3rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] opacity-70"></div>
         
         <div class="max-w-6xl mx-auto px-6 relative z-10">
@@ -79,6 +78,7 @@
                     </div>
                 </div>
                 
+                <!-- Interactive Blueprint Dashboard -->
                 <div class="lg:col-span-5 relative bg-slate-950 p-6 border border-slate-900 shadow-xl font-mono text-[10px] text-slate-400">
                     <div class="flex justify-between items-center border-b border-slate-800 pb-3 mb-4">
                         <span class="text-[8px] tracking-widest text-slate-500 uppercase">PARDE_ANALYTICS v5.2</span>
@@ -101,23 +101,18 @@
                         </div>
 
                         <!-- VIEW 2: OPTIMIZED -->
-                    <div id="view-roer" class="absolute inset-0 flex flex-col justify-center items-center transition-all duration-300 opacity-0 scale-95 pointer-events-none">
-                        <svg class="w-48 h-32 text-sky-500" viewBox="0 0 240 160" fill="none">
-                            <!-- Volumetría Normativa Escalada (Representación BIM) -->
-                            <rect x="60" y="100" width="120" height="30" fill="rgba(14, 165, 233, 0.15)" stroke="#0ea5e9" stroke-width="1" />
-                            <rect x="80" y="70" width="80" height="30" fill="rgba(14, 165, 233, 0.25)" stroke="#0ea5e9" stroke-width="1" />
-                            <rect x="100" y="45" width="40" height="25" fill="rgba(14, 165, 233, 0.35)" stroke="#0ea5e9" stroke-width="1" />
-                            
-                            <!-- Línea de Suelo (Rasante) -->
-                            <line x1="40" y1="130" x2="200" y2="130" stroke="#0ea5e9" stroke-width="1" stroke-dasharray="2 2" />
-                            
-                            <!-- Label -->
-                            <text x="120" y="145" text-anchor="middle" fill="#0ea5e9" class="text-[7px] font-bold tracking-widest uppercase">Modelo Volumétrico B.I.M.</text>
-                        </svg>
+                        <div id="view-roer" class="absolute inset-0 flex flex-col justify-center items-center transition-all duration-300 opacity-0 scale-95 pointer-events-none">
+                            <svg class="w-48 h-32 text-sky-500" viewBox="0 0 240 160" fill="none">
+                                <rect x="60" y="100" width="120" height="30" fill="rgba(14, 165, 233, 0.15)" stroke="#0ea5e9" stroke-width="1" />
+                                <rect x="80" y="70" width="80" height="30" fill="rgba(14, 165, 233, 0.25)" stroke="#0ea5e9" stroke-width="1" />
+                                <rect x="100" y="45" width="40" height="25" fill="rgba(14, 165, 233, 0.35)" stroke="#0ea5e9" stroke-width="1" />
+                                <line x1="40" y1="130" x2="200" y2="130" stroke="#0ea5e9" stroke-width="1" stroke-dasharray="2 2" />
+                                <text x="120" y="145" text-anchor="middle" fill="#0ea5e9" class="text-[7px] font-bold tracking-widest uppercase">Modelo Volumétrico B.I.M.</text>
+                            </svg>
+                        </div>
                     </div>
-                </div>
 
-                <div class="grid grid-cols-2 gap-2 border-t border-slate-900 pt-3 mt-3 text-[8px] text-slate-500">
+                    <div class="grid grid-cols-2 gap-2 border-t border-slate-900 pt-3 mt-3 text-[8px] text-slate-500">
                         <div>
                             <span>VIABILIDAD:</span>
                             <span id="meta-viabilidad" class="text-rose-400 font-bold block mt-0.5">INDETERMINADO</span>
@@ -345,7 +340,7 @@
         </div>
     </section>
 
-    <!-- Equipo Fundador Section -->
+    <!-- Equipo Fundador Section (Nosotros) -->
     <section id="nosotros" class="py-24 bg-white">
         <div class="max-w-4xl mx-auto px-6">
             <div class="text-center mb-16">
@@ -354,6 +349,29 @@
                 <div class="w-12 h-0.5 bg-slate-900 mx-auto mt-4"></div>
             </div>
 
+            <!-- About PARDE: Qué hacemos & Por qué lo hacemos (INTEGRADO DE FORMA IMPECABLE) -->
+            <div class="grid md:grid-cols-2 gap-12 mb-20 pb-16 border-b border-slate-100">
+                <div class="space-y-4">
+                    <h4 class="text-xs font-mono font-bold tracking-widest text-sky-600 uppercase">Qué Hacemos</h4>
+                    <p class="text-slate-800 font-extrabold text-lg leading-tight">
+                        Traducimos la complejidad de las normativas municipales en datos espaciales y comerciales de alta fidelidad.
+                    </p>
+                    <p class="text-xs text-slate-500 leading-relaxed font-light font-sans">
+                        En <strong class="text-slate-900 font-semibold">PARDE</strong> actuamos como el soporte de ingeniería y arquitectura de las oficinas de corretaje independientes. Analizamos Certificados de Informaciones Previas (CIP), levantamos modelos de cabida volumétrica en 3D (BIM) y saneamos expedientes técnicos (Ley del Mono, Ley 20.234) para certificar el valor real de un predio antes de comprometer su venta.
+                    </p>
+                </div>
+                <div class="space-y-4">
+                    <h4 class="text-xs font-mono font-bold tracking-widest text-sky-600 uppercase">Por Qué Lo Hacemos</h4>
+                    <p class="text-slate-800 font-extrabold text-lg leading-tight">
+                        Creemos que la incertidumbre legal y municipal no debe estancar vuestras comisiones ni el patrimonio de sus clientes.
+                    </p>
+                    <p class="text-xs text-slate-500 leading-relaxed font-light font-sans">
+                        El mercado inmobiliario suele operar a ciegas, basando precios de terrenos en meros supuestos que luego rebotan con el tasador del banco o en la Dirección de Obras Municipales (DOM). Nos unimos para entregar el rigor, la ética profesional y la precisión de nuestra formación académica pública, eliminando la desconfianza comercial y abriendo caminos claros de negociación.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Perfiles Sebastián & Adolfo -->
             <div class="grid md:grid-cols-2 gap-12">
                 <!-- Sebastián -->
                 <div class="border-l-2 border-slate-900 pl-6 space-y-3">
@@ -484,6 +502,7 @@
         </button>
     </div>
 
+    <!-- Scripts -->
     <script>
         function toggleWA() {
             const card = document.getElementById('wa-card');
