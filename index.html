@@ -43,7 +43,7 @@
                 <div class="hidden md:flex space-x-6 items-center text-[11px] font-bold tracking-wider uppercase">
                     <a href="#desafio" class="text-slate-500 hover:text-slate-950 transition-colors">El Desafío</a>
                     <a href="#planes" class="text-sky-600 hover:text-sky-800 transition-colors">Planes</a>
-                    <a href="#recursos" class="text-slate-500 hover:text-slate-950 transition-colors">Documentos PDF</a>
+                    <a href="#recursos" class="text-slate-950 hover:text-sky-600 transition-colors font-extrabold border-b border-sky-500">Documentos PDF</a>
                     <a href="#nosotros" class="text-slate-500 hover:text-slate-950 transition-colors">Nosotros</a>
                     <a href="#contacto" class="px-4 py-2 bg-slate-950 text-white hover:bg-slate-800 transition-all rounded-none">Diagnóstico 10'</a>
                 </div>
@@ -72,7 +72,7 @@
                         <a href="#planes" class="px-6 py-3.5 bg-slate-950 text-white text-[11px] font-bold uppercase tracking-wider hover:bg-slate-800 transition-all">
                             Ver Modalidades de Trabajo
                         </a>
-                        <a href="#recursos" class="px-6 py-3.5 bg-slate-100 border border-slate-200 text-slate-800 text-[11px] font-bold uppercase tracking-wider hover:bg-slate-200 transition-all">
+                        <a href="#recursos" class="px-6 py-3.5 bg-sky-600 text-white text-[11px] font-bold uppercase tracking-wider hover:bg-sky-700 transition-all shadow-md shadow-sky-500/10">
                             Descargar Reportes PDF
                         </a>
                     </div>
@@ -282,60 +282,87 @@
 
     <!-- PDF Resources Download Hub -->
     <section id="recursos" class="py-20 bg-slate-50 border-y border-slate-200">
-        <div class="max-w-4xl mx-auto px-6">
+        <div class="max-w-6xl mx-auto px-6">
             <div class="text-center mb-12">
                 <span class="text-xs font-mono tracking-widest text-sky-600 uppercase block mb-2">Herramientas & Diagnósticos Descargables</span>
                 <h3 class="text-2xl font-black text-slate-950 tracking-tight uppercase">Biblioteca de Inteligencia Técnica 2026</h3>
-                <p class="text-slate-500 text-xs mt-2 max-w-xl mx-auto font-light leading-relaxed">
-                    Hemos sintetizado la legislación chilena (LGUC, OGUC, DFL 2) en dos guías fundamentales para tasadores y corredores. Consigue certeza sin costo inicial.
+                <p class="text-slate-500 text-xs mt-2 max-w-2xl mx-auto font-light leading-relaxed">
+                    Hemos sintetizado la legislación chilena (LGUC, OGUC, DFL 2, Ley 20.898 y Ley 20.234) en guías y programas clave para acelerar tus operaciones. Consigue certeza sin costo inicial.
                 </p>
                 <div class="w-12 h-0.5 bg-slate-300 mx-auto mt-4"></div>
             </div>
 
-            <div class="grid md:grid-cols-2 gap-8">
-                <!-- PDF 1 Card -->
-                <div class="bg-white border border-slate-200 p-8 flex flex-col justify-between hover:shadow-sm transition-shadow">
+            <!-- Grilla Adaptativa de 3 Columnas -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                
+                <!-- PDF 1 Card: Checklist Certeza Normativa Terrenos -->
+                <div class="bg-white border border-slate-200 p-6 flex flex-col justify-between hover:shadow-md transition-shadow relative">
                     <div>
                         <div class="flex items-center gap-3 mb-4">
                             <div class="w-9 h-9 bg-rose-100 text-rose-600 flex items-center justify-center font-bold text-xs">PDF</div>
                             <div>
-                                <h4 class="text-sm font-bold text-slate-950">Guía de Viabilidad y Costos 2026</h4>
+                                <h4 class="text-xs font-black text-slate-950 uppercase leading-tight">Checklist Certeza Normativa de Terrenos</h4>
+                                <span class="text-[9px] text-slate-400 font-mono uppercase">5 Páginas • Manual Técnico</span>
+                            </div>
+                        </div>
+                        <p class="text-[11px] text-slate-500 font-light leading-relaxed mb-6">
+                            Manual práctico para captar y auditar carpetas técnicas de predios antes de publicar. Análisis detallado de afectaciones viales (expropiaciones), factibilidades sanitarias, servidumbres y riesgos latentes de subdivisiones irregulares en Chile.
+                        </p>
+                    </div>
+                    <a href="./Checklist_Certeza_Normativa_Terrenos.pdf" download="Checklist_Certeza_Normativa_Terrenos.pdf" class="inline-flex items-center justify-center gap-2 px-4 py-3 bg-slate-950 hover:bg-slate-800 text-white text-[10px] font-bold uppercase tracking-wider transition-all border border-slate-950">
+                        <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="square" stroke-linejoin="miter" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
+                        </svg>
+                        Descargar Checklist
+                    </a>
+                </div>
+
+                <!-- PDF 2 Card: Guia Viabilidad y Costos 2026 -->
+                <div class="bg-white border border-slate-200 p-6 flex flex-col justify-between hover:shadow-md transition-shadow relative">
+                    <span class="absolute top-2 right-2 bg-emerald-100 text-emerald-800 text-[8px] font-bold uppercase px-1.5 font-mono">Actualizado</span>
+                    <div>
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="w-9 h-9 bg-sky-100 text-sky-600 flex items-center justify-center font-bold text-xs">PDF</div>
+                            <div>
+                                <h4 class="text-xs font-black text-slate-950 uppercase leading-tight">Guía de Viabilidad y Costos 2026</h4>
                                 <span class="text-[9px] text-slate-400 font-mono uppercase">7 Páginas • Completo</span>
                             </div>
                         </div>
-                        <p class="text-xs text-slate-500 font-light leading-relaxed mb-6">
-                            Rangos presupuestarios detallados de edificación en UF/m², distribución de costos indirectos, el Modelo Donut 2026, y estrategias legales para la recuperación del IVA ante la edificación comercial.
+                        <p class="text-[11px] text-slate-500 font-light leading-relaxed mb-6">
+                            Rangos presupuestarios reales de edificación residencial y comercial en UF/m², desglose de costos directos e indirectos (Modelo Donut 2026), estudios geotécnicos, y estrategias de recuperación legal del IVA de construcción.
                         </p>
                     </div>
-                    <a href="./Guia_Viabilidad_y_Costos_2026.pdf" download="Guia_Viabilidad_Costos_2026_PARDE.pdf" class="inline-flex items-center justify-center gap-2 px-4 py-3 bg-slate-100 hover:bg-slate-200 text-slate-800 text-[10px] font-bold uppercase tracking-wider transition-all border border-slate-200">
-                        <svg class="w-4 h-4 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <a href="./Guia_Viabilidad_y_Costos_2026.pdf" download="Guia_Viabilidad_y_Costos_2026.pdf" class="inline-flex items-center justify-center gap-2 px-4 py-3 bg-slate-950 hover:bg-slate-800 text-white text-[10px] font-bold uppercase tracking-wider transition-all border border-slate-950">
+                        <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="square" stroke-linejoin="miter" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
                         </svg>
                         Descargar Guía de Costos
                     </a>
                 </div>
 
-                <!-- PDF 2 Card -->
-                <div class="bg-white border border-slate-200 p-8 flex flex-col justify-between hover:shadow-sm transition-shadow">
+                <!-- PDF 3 Card: Programa Proyectos Piloto PPP 2026 -->
+                <div class="bg-white border border-slate-200 p-6 flex flex-col justify-between hover:shadow-md transition-shadow relative">
+                    <span class="absolute top-2 right-2 bg-sky-100 text-sky-800 text-[8px] font-bold uppercase px-1.5 font-mono">B2B Exclusivo</span>
                     <div>
                         <div class="flex items-center gap-3 mb-4">
-                            <div class="w-9 h-9 bg-sky-100 text-sky-600 flex items-center justify-center font-bold text-xs">PDF</div>
+                            <div class="w-9 h-9 bg-emerald-100 text-emerald-700 flex items-center justify-center font-bold text-xs">PDF</div>
                             <div>
-                                <h4 class="text-sm font-bold text-slate-950">Checklist Certeza Normativa en Terrenos</h4>
-                                <span class="text-[9px] text-slate-400 font-mono uppercase">5 Páginas • Manual Técnico</span>
+                                <h4 class="text-xs font-black text-slate-950 uppercase leading-tight">Programa Proyectos Piloto PPP 2026</h4>
+                                <span class="text-[9px] text-slate-400 font-mono uppercase">3 Páginas • Alianzas</span>
                             </div>
                         </div>
-                        <p class="text-xs text-slate-500 font-light leading-relaxed mb-6">
-                            Manual práctico para captar y auditar carpetas técnicas de predios antes de publicar. Análisis de expropiaciones, pendientes geográficas, servidumbres y riesgos de los loteos irregulares.
+                        <p class="text-[11px] text-slate-500 font-light leading-relaxed mb-6">
+                            Propuesta de valor para corredoras asociadas. Evaluamos de forma gratuita 1 de tus activos estancados con nuestro equipo técnico e implementamos un modelo de cabida en entornos BIM tridimensionales sin coste inicial.
                         </p>
                     </div>
-                    <a href="./Checklist_Certeza_Normativa_Terrenos.pdf" download="Checklist_Certeza_Normativa_Terrenos_PARDE.pdf" class="inline-flex items-center justify-center gap-2 px-4 py-3 bg-slate-100 hover:bg-slate-200 text-slate-800 text-[10px] font-bold uppercase tracking-wider transition-all border border-slate-200">
-                        <svg class="w-4 h-4 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <a href="./Programa_Proyectos_Piloto_PPP_2026.pdf" download="Programa_Proyectos_Piloto_PPP_2026.pdf" class="inline-flex items-center justify-center gap-2 px-4 py-3 bg-sky-600 hover:bg-sky-700 text-white text-[10px] font-bold uppercase tracking-wider transition-all border border-sky-600 shadow-sm">
+                        <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="square" stroke-linejoin="miter" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
                         </svg>
-                        Descargar Manual Terrenos
+                        Descargar Programa Piloto
                     </a>
                 </div>
+
             </div>
         </div>
     </section>
@@ -349,7 +376,7 @@
                 <div class="w-12 h-0.5 bg-slate-900 mx-auto mt-4"></div>
             </div>
 
-            <!-- About PARDE: Qué hacemos & Por qué lo hacemos (INTEGRADO DE FORMA IMPECABLE) -->
+            <!-- About PARDE: Qué hacemos & Por qué lo hacemos -->
             <div class="grid md:grid-cols-2 gap-12 mb-20 pb-16 border-b border-slate-100">
                 <div class="space-y-4">
                     <h4 class="text-xs font-mono font-bold tracking-widest text-sky-600 uppercase">Qué Hacemos</h4>
@@ -469,7 +496,7 @@
             <div class="flex gap-4 font-bold text-slate-600">
                 <a href="mailto:roer.arquitectura@gmail.com" class="hover:text-slate-950">Contacto Directo</a>
                 <span>|</span>
-                <a href="#home" class="hover:text-slate-950">Subir ↑</a>
+                <a href="#" class="hover:text-slate-950">Subir ↑</a>
             </div>
         </div>
     </footer>
