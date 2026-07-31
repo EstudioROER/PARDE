@@ -115,7 +115,7 @@
               <span class="skill-tag">DOM en Línea</span>
               <span class="skill-tag">AutoCAD</span>
             </div>
-            <a href="docs/CV - Sebastián M. Vera _ Arquitecto (1).pdf" target="_blank" rel="noopener noreferrer" class="btn-secondary" style="margin-top: 1.25rem; font-size: 0.85rem; padding: 0.5rem 1rem;">Descargar CV (PDF)</a>
+            <button onclick="openCvModal('sebastian', 'CV - Sebastián M. Vera _ Arquitecto (1).pdf', 'Sebastián M. Vera Muñoz')" class="btn-secondary" style="margin-top: 1.25rem; font-size: 0.85rem; padding: 0.5rem 1rem; cursor:pointer;">Solicitar CV (PDF)</button>
           </div>
         </div>
 
@@ -136,7 +136,7 @@
               <span class="skill-tag">Planificación Territorial</span>
               <span class="skill-tag">Modelado 3D</span>
             </div>
-            <a href="docs/CVDadolfohenriquez_2026.pdf" target="_blank" rel="noopener noreferrer" class="btn-secondary" style="margin-top: 1.25rem; font-size: 0.85rem; padding: 0.5rem 1rem;">Descargar CV (PDF)</a>
+            <button onclick="openCvModal('adolfo', 'CVDadolfohenriquez_2026.pdf', 'Adolfo Henríquez Carvajal')" class="btn-secondary" style="margin-top: 1.25rem; font-size: 0.85rem; padding: 0.5rem 1rem; cursor:pointer;">Solicitar CV (PDF)</button>
           </div>
         </div>
       </div>
@@ -454,6 +454,153 @@
     </div>
   </footer>
 
+  <!-- CV Request Modal -->
+  <div id="cv-modal" style="display:none; position:fixed; inset:0; z-index:9999; background:rgba(28,29,31,0.75); backdrop-filter:blur(6px); align-items:center; justify-content:center; padding:1rem;">
+    <div style="background:var(--bg-primary,#FAF8F5); border-radius:1.25rem; max-width:480px; width:100%; max-height:90vh; overflow-y:auto; padding:2rem 1.75rem; box-shadow:0 24px 80px rgba(0,0,0,0.28); position:relative;">
+
+      <!-- Close button -->
+      <button onclick="closeCvModal()" aria-label="Cerrar" style="position:absolute;top:1rem;right:1rem;background:none;border:none;font-size:1.5rem;cursor:pointer;color:#5A5C60;">&#x2715;</button>
+
+      <!-- Header -->
+      <div style="text-align:center; margin-bottom:1.5rem;">
+        <div style="font-size:2rem; margin-bottom:0.5rem;">🔒</div>
+        <h3 style="font-size:1.3rem; color:#1C1D1F; margin-bottom:0.4rem;">Solicitud de Currículum Vitae</h3>
+        <p id="cv-modal-subtitle" style="font-size:0.9rem; color:#5A5C60;">Complete los datos para acceder al documento.</p>
+      </div>
+
+      <!-- Info box -->
+      <div style="background:#F2EFE9; border-left:3px solid #9E763B; padding:0.75rem 1rem; border-radius:0.5rem; margin-bottom:1.5rem; font-size:0.82rem; color:#5A5C60; line-height:1.5;">
+        Por motivos de privacidad profesional, el acceso a este documento requiere identificarse. Sus datos serán recibidos directamente por el equipo de <strong style="color:#1C1D1F;">PARDE ARQUITECTOS</strong>.
+      </div>
+
+      <!-- Form -->
+      <form id="cv-request-form" onsubmit="submitCvRequest(event)">
+        <input type="hidden" id="cv-modal-target-file" value="">
+        <input type="hidden" id="cv-modal-person-name" value="">
+
+        <div style="display:grid; gap:1rem;">
+          <div>
+            <label for="cv-req-name" style="display:block; font-size:0.82rem; font-weight:600; color:#1C1D1F; margin-bottom:0.35rem;">Nombre Completo *</label>
+            <input type="text" id="cv-req-name" required placeholder="Su nombre y apellido" style="width:100%; padding:0.65rem 0.9rem; border:1.5px solid #E2DDD5; border-radius:0.6rem; font-size:0.9rem; background:#fff; color:#1C1D1F; outline:none; box-sizing:border-box; transition:border-color .2s;" onfocus="this.style.borderColor='#9E763B'" onblur="this.style.borderColor='#E2DDD5'">
+          </div>
+          <div>
+            <label for="cv-req-company" style="display:block; font-size:0.82rem; font-weight:600; color:#1C1D1F; margin-bottom:0.35rem;">Empresa / Institución *</label>
+            <input type="text" id="cv-req-company" required placeholder="Su empresa u organización" style="width:100%; padding:0.65rem 0.9rem; border:1.5px solid #E2DDD5; border-radius:0.6rem; font-size:0.9rem; background:#fff; color:#1C1D1F; outline:none; box-sizing:border-box; transition:border-color .2s;" onfocus="this.style.borderColor='#9E763B'" onblur="this.style.borderColor='#E2DDD5'">
+          </div>
+          <div>
+            <label for="cv-req-email" style="display:block; font-size:0.82rem; font-weight:600; color:#1C1D1F; margin-bottom:0.35rem;">Email de Contacto *</label>
+            <input type="email" id="cv-req-email" required placeholder="su@email.com" style="width:100%; padding:0.65rem 0.9rem; border:1.5px solid #E2DDD5; border-radius:0.6rem; font-size:0.9rem; background:#fff; color:#1C1D1F; outline:none; box-sizing:border-box; transition:border-color .2s;" onfocus="this.style.borderColor='#9E763B'" onblur="this.style.borderColor='#E2DDD5'">
+          </div>
+          <div>
+            <label for="cv-req-reason" style="display:block; font-size:0.82rem; font-weight:600; color:#1C1D1F; margin-bottom:0.35rem;">Motivo de la Solicitud *</label>
+            <select id="cv-req-reason" required style="width:100%; padding:0.65rem 0.9rem; border:1.5px solid #E2DDD5; border-radius:0.6rem; font-size:0.9rem; background:#fff; color:#1C1D1F; outline:none; box-sizing:border-box; transition:border-color .2s;" onfocus="this.style.borderColor='#9E763B'" onblur="this.style.borderColor='#E2DDD5'">
+              <option value="" disabled selected>Seleccione un motivo...</option>
+              <option value="Propuesta de proyecto / encargo">Propuesta de proyecto / encargo</option>
+              <option value="Proceso de selección / contratación">Proceso de selección / contratación</option>
+              <option value="Alianza o colaboración profesional">Alianza o colaboración profesional</option>
+              <option value="Evaluación académica / investigación">Evaluación académica / investigación</option>
+              <option value="Otro">Otro</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Status message -->
+        <div id="cv-modal-status" style="margin-top:1rem; display:none; padding:0.75rem 1rem; border-radius:0.5rem; font-size:0.85rem; text-align:center;"></div>
+
+        <!-- Submit -->
+        <button type="submit" id="cv-submit-btn" style="margin-top:1.25rem; width:100%; padding:0.85rem; background:#9E763B; color:#fff; border:none; border-radius:0.75rem; font-size:0.95rem; font-weight:700; cursor:pointer; letter-spacing:0.03em; transition:background .2s;">
+          Enviar Solicitud y Acceder al CV
+        </button>
+      </form>
+
+      <!-- Download area replaced with confirmation only -->
+      <div id="cv-download-area" style="display:none; text-align:center; padding:1rem 0;">
+        <div style="font-size:2.8rem; margin-bottom:0.75rem;">✅</div>
+        <p style="color:#1C1D1F; font-weight:700; font-size:1.05rem; margin-bottom:0.6rem;">¡Solicitud recibida!</p>
+        <p style="color:#5A5C60; font-size:0.88rem; line-height:1.6;">El equipo de <strong style="color:#1C1D1F;">PARDE ARQUITECTOS</strong> ha recibido tu solicitud y se comunicará contigo a la brevedad al correo indicado.</p>
+        <button onclick="closeCvModal()" style="margin-top:1.5rem; padding:0.7rem 2rem; background:#1C1D1F; color:#fff; border:none; border-radius:0.75rem; font-size:0.9rem; font-weight:600; cursor:pointer;">Cerrar</button>
+      </div>
+
+    </div>
+  </div>
+
   <script src="js/app.js"></script>
+  <script>
+    function openCvModal(who, filename, personName) {
+      document.getElementById('cv-modal-target-file').value = filename;
+      document.getElementById('cv-modal-person-name').value = personName;
+      document.getElementById('cv-modal-subtitle').textContent = 'Solicitud de acceso al CV de ' + personName + '.';
+      document.getElementById('cv-request-form').style.display = '';
+      document.getElementById('cv-download-area').style.display = 'none';
+      document.getElementById('cv-modal-status').style.display = 'none';
+      document.getElementById('cv-submit-btn').disabled = false;
+      document.getElementById('cv-submit-btn').textContent = 'Enviar Solicitud y Acceder al CV';
+      // Clear fields
+      ['cv-req-name','cv-req-company','cv-req-email','cv-req-reason'].forEach(id => document.getElementById(id).value = '');
+      const modal = document.getElementById('cv-modal');
+      modal.style.display = 'flex';
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeCvModal() {
+      document.getElementById('cv-modal').style.display = 'none';
+      document.body.style.overflow = '';
+    }
+
+    document.getElementById('cv-modal').addEventListener('click', function(e) {
+      if (e.target === this) closeCvModal();
+    });
+
+    async function submitCvRequest(e) {
+      e.preventDefault();
+      const btn = document.getElementById('cv-submit-btn');
+      const statusEl = document.getElementById('cv-modal-status');
+      const name = document.getElementById('cv-req-name').value;
+      const company = document.getElementById('cv-req-company').value;
+      const email = document.getElementById('cv-req-email').value;
+      const reason = document.getElementById('cv-req-reason').value;
+      const targetPerson = document.getElementById('cv-modal-person-name').value;
+      const targetFile = document.getElementById('cv-modal-target-file').value;
+
+      btn.disabled = true;
+      btn.textContent = 'Enviando...';
+      statusEl.style.display = 'none';
+
+      try {
+        const response = await fetch('https://api.web3forms.com/submit', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+          body: JSON.stringify({
+            access_key: 'e490e5d7-70f1-4840-95e6-b4c4a9084d18',
+            subject: '🔔 Solicitud de CV: ' + targetPerson + ' — ' + company,
+            from_name: name + ' (' + company + ')',
+            email: 'contacto@pardearquitectos.com',
+            message:
+              '📋 SOLICITUD DE CURRÍCULUM VITAE\n\n' +
+              '• CV Solicitado: ' + targetPerson + '\n' +
+              '• Nombre del Solicitante: ' + name + '\n' +
+              '• Empresa / Institución: ' + company + '\n' +
+              '• Email de Contacto: ' + email + '\n' +
+              '• Motivo de la Solicitud: ' + reason + '\n\n' +
+              '— Enviado desde www.pardearquitectos.com'
+          })
+        });
+        const data = await response.json();
+        if (data.success) {
+          document.getElementById('cv-request-form').style.display = 'none';
+          document.getElementById('cv-download-area').style.display = 'block';
+        } else {
+          throw new Error('Error en el envío');
+        }
+      } catch (err) {
+        statusEl.textContent = 'Hubo un problema al enviar la solicitud. Inténtelo nuevamente.';
+        statusEl.style.display = 'block';
+        statusEl.style.background = '#fff0f0';
+        statusEl.style.color = '#c0392b';
+        btn.disabled = false;
+        btn.textContent = 'Enviar Solicitud y Acceder al CV';
+      }
+    }
+  </script>
 </body>
 </html>
