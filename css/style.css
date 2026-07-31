@@ -799,3 +799,241 @@ footer {
     justify-content: center;
   }
 }
+
+/* ================================================
+   RESPONSIVE — TABLET (max-width: 992px)
+   ================================================ */
+@media (max-width: 992px) {
+  section {
+    padding: 70px 0;
+  }
+
+  .section-title h2 {
+    font-size: 2rem;
+  }
+
+  .downloads-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .services-grid {
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  }
+}
+
+/* ================================================
+   RESPONSIVE — MOBILE (max-width: 768px)
+   ================================================ */
+@media (max-width: 768px) {
+
+  /* --- Global --- */
+  section {
+    padding: 56px 0;
+  }
+
+  .container {
+    width: 94%;
+    padding: 0 12px;
+  }
+
+  /* --- Typography --- */
+  h2 { font-size: 1.75rem; }
+  h3 { font-size: 1.25rem; }
+
+  .section-title {
+    margin-bottom: 2.25rem;
+  }
+
+  .section-title h2 {
+    font-size: 1.85rem;
+  }
+
+  /* --- Header & Nav --- */
+  .nav-wrapper {
+    height: 68px;
+  }
+
+  .logo {
+    font-size: 1.1rem;
+  }
+
+  .mobile-toggle {
+    display: block;
+  }
+
+  nav {
+    position: fixed;
+    top: 68px;
+    left: -100%;
+    width: 100%;
+    height: calc(100vh - 68px);
+    background: var(--bg-primary);
+    transition: var(--transition-smooth);
+    border-top: 1px solid var(--border-color);
+    overflow-y: auto;
+  }
+
+  nav.open {
+    left: 0;
+  }
+
+  nav ul {
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem 1rem;
+    gap: 1.5rem;
+  }
+
+  nav a {
+    font-size: 1.1rem;
+  }
+
+  /* --- Hero --- */
+  .hero {
+    min-height: auto;
+    padding-top: 90px;
+    padding-bottom: 3rem;
+  }
+
+  .hero-grid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  .hero-content h1 {
+    font-size: 2.1rem;
+    line-height: 1.2;
+  }
+
+  .hero-content p {
+    font-size: 1rem;
+    margin-bottom: 1.75rem;
+  }
+
+  .hero-cta {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .hero-cta .btn-cta,
+  .hero-cta .btn-secondary {
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+  }
+
+  /* Before-After card */
+  .before-after-card {
+    padding: 1.25rem;
+  }
+
+  .ba-visual-box {
+    min-height: 200px;
+    padding: 1rem;
+  }
+
+  /* --- Founders --- */
+  .founders-grid {
+    grid-template-columns: 1fr;
+    gap: 1.75rem;
+  }
+
+  .founder-card {
+    grid-template-columns: 1fr;
+    text-align: center;
+    gap: 1.25rem;
+  }
+
+  .founder-avatar-wrapper {
+    max-width: 140px;
+    margin: 0 auto;
+  }
+
+  .founder-skills {
+    justify-content: center;
+  }
+
+  .founder-info h3 {
+    font-size: 1.3rem;
+  }
+
+  /* --- Services --- */
+  .services-grid {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+
+  .glass-card {
+    padding: 1.5rem;
+  }
+
+  /* --- Downloads --- */
+  .downloads-grid {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+
+  /* --- Contact --- */
+  .contact-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  /* --- Footer --- */
+  .footer-wrapper {
+    flex-direction: column;
+    text-align: center;
+    gap: 1rem;
+  }
+}
+
+/* ================================================
+   RESPONSIVE — SMALL MOBILE (max-width: 480px)
+   ================================================ */
+@media (max-width: 480px) {
+
+  .hero-content h1 {
+    font-size: 1.75rem;
+  }
+
+  .section-title h2 {
+    font-size: 1.6rem;
+  }
+
+  .btn-cta, .btn-secondary {
+    font-size: 0.85rem;
+    padding: 0.75rem 1.1rem;
+  }
+
+  .glass-card {
+    padding: 1.25rem;
+    border-radius: 10px;
+  }
+
+  .service-icon {
+    width: 42px;
+    height: 42px;
+    font-size: 1.25rem;
+  }
+
+  .download-icon {
+    font-size: 2.25rem;
+  }
+
+  .info-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+
+  /* Pilot program inner grid */
+  .glass-card [style*="grid-template-columns: 80px"] {
+    grid-template-columns: 1fr !important;
+    text-align: center;
+  }
+}
