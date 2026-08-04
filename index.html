@@ -326,7 +326,7 @@
               <li>Esquema Volumétrico 3D Básico</li>
               <li>Plazo de Entrega: 3 a 5 días hábiles</li>
             </ul>
-            <a href="#contacto" class="btn-secondary" style="width: 100%; justify-content: center;">Cotizar Plan Inicial</a>
+            <button onclick="openPlanModal('Plan Inicial - Diagnóstico Predial (15 UF)')" class="btn-secondary" style="width: 100%; justify-content: center; border: 1px solid var(--border-color); cursor: pointer; font-family: inherit;">Cotizar Plan Inicial</button>
           </div>
 
           <!-- Plan 2: Pro / Piloto Corporativo (Destacado) -->
@@ -348,7 +348,7 @@
               <li>Matriz de Mitigación de Riesgos viales y servidumbres</li>
               <li>Plazo de Entrega: 5 a 7 días hábiles</li>
             </ul>
-            <a href="#contacto" class="btn-cta" style="width: 100%; justify-content: center;">Contratar Plan Pro 🚀</a>
+            <button onclick="openPlanModal('Plan Corporativo Pro - Piloto 3D (35 UF)')" class="btn-cta" style="width: 100%; justify-content: center; border: none; cursor: pointer; font-family: inherit;">Contratar Plan Pro 🚀</button>
           </div>
 
           <!-- Plan 3: Enterprise / Consultoría Integral -->
@@ -368,7 +368,7 @@
               <li>Coordinación de especialidades (Topografía, Suelos, TE1/TC6)</li>
               <li>Asesoría legal urbanística continuada</li>
             </ul>
-            <a href="#contacto" class="btn-secondary" style="width: 100%; justify-content: center;">Cotizar Proyecto Integral</a>
+            <button onclick="openPlanModal('Plan Integral - Consultoría & DOM (65+ UF)')" class="btn-secondary" style="width: 100%; justify-content: center; border: 1px solid var(--border-color); cursor: pointer; font-family: inherit;">Cotizar Proyecto Integral</button>
           </div>
         </div>
       </div>
@@ -653,6 +653,74 @@
     </div>
   </div>
 
+  <!-- Plan Hiring / Quote Request Modal -->
+  <div id="plan-modal" style="display:none; position:fixed; inset:0; z-index:9999; background:rgba(28,29,31,0.75); backdrop-filter:blur(6px); align-items:center; justify-content:center; padding:1rem;">
+    <div style="background:var(--bg-primary,#FAF8F5); border-radius:1.25rem; max-width:500px; width:100%; max-height:90vh; overflow-y:auto; padding:2rem 1.75rem; box-shadow:0 24px 80px rgba(0,0,0,0.28); position:relative;">
+
+      <!-- Close button -->
+      <button onclick="closePlanModal()" aria-label="Cerrar" style="position:absolute;top:1rem;right:1rem;background:none;border:none;font-size:1.5rem;cursor:pointer;color:#5A5C60;">&#x2715;</button>
+
+      <!-- Header -->
+      <div style="text-align:center; margin-bottom:1.5rem;">
+        <div style="font-size:2.2rem; margin-bottom:0.4rem;">🏛️</div>
+        <h3 id="plan-modal-title" style="font-size:1.35rem; color:#1C1D1F; margin-bottom:0.4rem;">Solicitud de Contratación / Cotización</h3>
+        <p id="plan-modal-subtitle" style="font-size:0.88rem; color:#9E763B; font-weight:700;">Plan Seleccionado</p>
+      </div>
+
+      <!-- Info box -->
+      <div style="background:#F2EFE9; border-left:3px solid #9E763B; padding:0.75rem 1rem; border-radius:0.5rem; margin-bottom:1.5rem; font-size:0.82rem; color:#5A5C60; line-height:1.5;">
+        Ingrese sus datos y antecedentes de su propiedad. El equipo técnico de <strong style="color:#1C1D1F;">PARDE ARQUITECTOS</strong> evaluará su caso y le contactará a la brevedad.
+      </div>
+
+      <!-- Form -->
+      <form id="plan-request-form" onsubmit="submitPlanRequest(event)">
+        <input type="hidden" id="plan-modal-selected-name" value="">
+
+        <div style="display:grid; gap:1rem;">
+          <div>
+            <label for="plan-req-name" style="display:block; font-size:0.82rem; font-weight:600; color:#1C1D1F; margin-bottom:0.35rem;">Nombre Completo *</label>
+            <input type="text" id="plan-req-name" required placeholder="Su nombre y apellido" style="width:100%; padding:0.65rem 0.9rem; border:1.5px solid #E2DDD5; border-radius:0.6rem; font-size:0.9rem; background:#fff; color:#1C1D1F; outline:none; box-sizing:border-box; transition:border-color .2s;" onfocus="this.style.borderColor='#9E763B'" onblur="this.style.borderColor='#E2DDD5'">
+          </div>
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:0.75rem;">
+            <div>
+              <label for="plan-req-email" style="display:block; font-size:0.82rem; font-weight:600; color:#1C1D1F; margin-bottom:0.35rem;">Email *</label>
+              <input type="email" id="plan-req-email" required placeholder="tu@email.com" style="width:100%; padding:0.65rem 0.9rem; border:1.5px solid #E2DDD5; border-radius:0.6rem; font-size:0.9rem; background:#fff; color:#1C1D1F; outline:none; box-sizing:border-box; transition:border-color .2s;" onfocus="this.style.borderColor='#9E763B'" onblur="this.style.borderColor='#E2DDD5'">
+            </div>
+            <div>
+              <label for="plan-req-phone" style="display:block; font-size:0.82rem; font-weight:600; color:#1C1D1F; margin-bottom:0.35rem;">Teléfono / WhatsApp *</label>
+              <input type="tel" id="plan-req-phone" required placeholder="+56 9..." style="width:100%; padding:0.65rem 0.9rem; border:1.5px solid #E2DDD5; border-radius:0.6rem; font-size:0.9rem; background:#fff; color:#1C1D1F; outline:none; box-sizing:border-box; transition:border-color .2s;" onfocus="this.style.borderColor='#9E763B'" onblur="this.style.borderColor='#E2DDD5'">
+            </div>
+          </div>
+          <div>
+            <label for="plan-req-property" style="display:block; font-size:0.82rem; font-weight:600; color:#1C1D1F; margin-bottom:0.35rem;">Ubicación / Comuna o Rol de la Propiedad</label>
+            <input type="text" id="plan-req-property" placeholder="Ej: Comuna, dirección o superficie aprox. del terreno" style="width:100%; padding:0.65rem 0.9rem; border:1.5px solid #E2DDD5; border-radius:0.6rem; font-size:0.9rem; background:#fff; color:#1C1D1F; outline:none; box-sizing:border-box; transition:border-color .2s;" onfocus="this.style.borderColor='#9E763B'" onblur="this.style.borderColor='#E2DDD5'">
+          </div>
+          <div>
+            <label for="plan-req-notes" style="display:block; font-size:0.82rem; font-weight:600; color:#1C1D1F; margin-bottom:0.35rem;">Consulta o Requerimiento Específico</label>
+            <textarea id="plan-req-notes" rows="3" placeholder="Describa el estado de su terreno, dudas sobre el CIP o plazos requeridos..." style="width:100%; padding:0.65rem 0.9rem; border:1.5px solid #E2DDD5; border-radius:0.6rem; font-size:0.9rem; background:#fff; color:#1C1D1F; outline:none; box-sizing:border-box; resize:vertical; transition:border-color .2s;" onfocus="this.style.borderColor='#9E763B'" onblur="this.style.borderColor='#E2DDD5'"></textarea>
+          </div>
+        </div>
+
+        <!-- Status message -->
+        <div id="plan-modal-status" style="margin-top:1rem; display:none; padding:0.75rem 1rem; border-radius:0.5rem; font-size:0.85rem; text-align:center;"></div>
+
+        <!-- Submit -->
+        <button type="submit" id="plan-submit-btn" style="margin-top:1.25rem; width:100%; padding:0.85rem; background:#9E763B; color:#fff; border:none; border-radius:0.75rem; font-size:0.95rem; font-weight:700; cursor:pointer; letter-spacing:0.03em; transition:background .2s;">
+          Enviar Solicitud de Contratación 🚀
+        </button>
+      </form>
+
+      <!-- Confirmation area -->
+      <div id="plan-success-area" style="display:none; text-align:center; padding:1rem 0;">
+        <div style="font-size:2.8rem; margin-bottom:0.75rem;">✅</div>
+        <p style="color:#1C1D1F; font-weight:700; font-size:1.05rem; margin-bottom:0.6rem;">¡Solicitud Recibida con Éxito!</p>
+        <p style="color:#5A5C60; font-size:0.88rem; line-height:1.6;">Hemos recibido su requerimiento de contratación. El equipo de <strong style="color:#1C1D1F;">PARDE ARQUITECTOS</strong> revisará la viabilidad de su propiedad y le contactará a la brevedad al correo/teléfono indicado.</p>
+        <button onclick="closePlanModal()" style="margin-top:1.5rem; padding:0.7rem 2rem; background:#1C1D1F; color:#fff; border:none; border-radius:0.75rem; font-size:0.9rem; font-weight:600; cursor:pointer;">Cerrar</button>
+      </div>
+
+    </div>
+  </div>
+
   <script src="js/app.js"></script>
   <script>
     function openCvModal(who, filename, personName) {
@@ -818,6 +886,88 @@
         statusEl.style.color = '#c0392b';
         btn.disabled = false;
         btn.textContent = 'Obtener Documento';
+      }
+    }
+
+    // --- PLAN REQUEST MODAL LOGIC ---
+    function openPlanModal(planName) {
+      document.getElementById('plan-modal-selected-name').value = planName;
+      document.getElementById('plan-modal-subtitle').textContent = 'Plan Seleccionado: ' + planName;
+      document.getElementById('plan-request-form').style.display = '';
+      document.getElementById('plan-success-area').style.display = 'none';
+      document.getElementById('plan-modal-status').style.display = 'none';
+      document.getElementById('plan-submit-btn').disabled = false;
+      document.getElementById('plan-submit-btn').textContent = 'Enviar Solicitud de Contratación 🚀';
+
+      ['plan-req-name','plan-req-email','plan-req-phone','plan-req-property','plan-req-notes'].forEach(id => {
+        const el = document.getElementById(id);
+        if (el) el.value = '';
+      });
+
+      const modal = document.getElementById('plan-modal');
+      modal.style.display = 'flex';
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closePlanModal() {
+      document.getElementById('plan-modal').style.display = 'none';
+      document.body.style.overflow = '';
+    }
+
+    document.getElementById('plan-modal').addEventListener('click', function(e) {
+      if (e.target === this) closePlanModal();
+    });
+
+    async function submitPlanRequest(e) {
+      e.preventDefault();
+      const btn = document.getElementById('plan-submit-btn');
+      const statusEl = document.getElementById('plan-modal-status');
+      const name = document.getElementById('plan-req-name').value;
+      const email = document.getElementById('plan-req-email').value;
+      const phone = document.getElementById('plan-req-phone').value;
+      const property = document.getElementById('plan-req-property').value || 'No especificada';
+      const notes = document.getElementById('plan-req-notes').value || 'Sin notas adicionales';
+      const planName = document.getElementById('plan-modal-selected-name').value;
+
+      btn.disabled = true;
+      btn.textContent = 'Enviando...';
+      statusEl.style.display = 'none';
+
+      try {
+        const response = await fetch('https://api.web3forms.com/submit', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+          body: JSON.stringify({
+            access_key: 'e490e5d7-70f1-4840-95e6-b4c4a9084d18',
+            subject: '📋 NUEVA CONTRATACIÓN: ' + planName + ' — ' + name,
+            from_name: name,
+            email: email,
+            message:
+              '📋 SOLICITUD DE CONTRATACIÓN DE PLAN DE SERVICIO\n\n' +
+              '• Plan Solicitado: ' + planName + '\n' +
+              '• Nombre Cliente: ' + name + '\n' +
+              '• Email: ' + email + '\n' +
+              '• Teléfono / WhatsApp: ' + phone + '\n' +
+              '• Propiedad / Ubicación: ' + property + '\n' +
+              '• Consulta / Notas: ' + notes + '\n\n' +
+              '— Enviado desde www.pardearquitectos.com'
+          })
+        });
+
+        const data = await response.json();
+        if (data.success) {
+          document.getElementById('plan-request-form').style.display = 'none';
+          document.getElementById('plan-success-area').style.display = 'block';
+        } else {
+          throw new Error('Error en el envío');
+        }
+      } catch (err) {
+        statusEl.textContent = 'Hubo un problema al enviar la solicitud. Inténtelo nuevamente.';
+        statusEl.style.display = 'block';
+        statusEl.style.background = '#fff0f0';
+        statusEl.style.color = '#c0392b';
+        btn.disabled = false;
+        btn.textContent = 'Enviar Solicitud de Contratación 🚀';
       }
     }
   </script>
