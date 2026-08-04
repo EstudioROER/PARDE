@@ -1,0 +1,3 @@
+Carpeta Google Drive: https://drive.google.com/drive/folders/1cymSEFif45b7FfePIB0ux_0qY2G-SeuE
+Google Sheet Directo: https://docs.google.com/spreadsheets/d/1plfygfScE9ZTbIpGdFDc8s-3Xy68Sll4oE0SUAkHa-o/edit?usp=drivesdk
+Excel (.xlsx) en Drive: https://docs.google.com/spreadsheets/d/1bv6Ge-RrU96rMaQpzfphq36IjVD89uvL/edit?usp=drivesdk&ouid=100857699965347963829&rtpof=true&sd=true
