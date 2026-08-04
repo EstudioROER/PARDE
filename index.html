@@ -222,10 +222,10 @@
         </div>
         <div style="text-align: center; border-top: 1px solid var(--border-color); padding-top: 1.5rem;">
           <p style="font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 1.25rem;">Consulte la guía completa con tablas de precios en UF actualizadas para el mercado chileno 2026.</p>
-          <a href="docs/Guia_Viabilidad_Costos_2026_PARDE.pdf" target="_blank" rel="noopener noreferrer" class="btn-cta">
-            <span>Abrir / Descargar Guía de Costos (PDF)</span>
+          <button onclick="openDownloadModal('Guía Viabilidad & Costos', 'docs/Guia_Viabilidad_Costos_2026_PARDE.pdf')" class="btn-cta" style="border: none; cursor: pointer; font-family: inherit;">
+            <span>Descargar Guía de Costos (PDF)</span>
             <span style="font-size: 0.8rem; opacity: 0.7;">[10.5 KB]</span>
-          </a>
+          </button>
         </div>
       </div>
     </div>
@@ -258,10 +258,10 @@
         </div>
         <div style="text-align: center; border-top: 1px solid var(--border-color); padding-top: 1.5rem;">
           <p style="font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 1.25rem;">Audite de forma autónoma la viabilidad técnica de su predio y proteja el cierre comercial.</p>
-          <a href="docs/Checklist_Certeza_Normativa_Terrenos_PARDE.pdf" target="_blank" rel="noopener noreferrer" class="btn-cta">
-            <span>Abrir / Descargar Manual & Checklist (PDF)</span>
+          <button onclick="openDownloadModal('Checklist Certeza Terrenos', 'docs/Checklist_Certeza_Normativa_Terrenos_PARDE.pdf')" class="btn-cta" style="border: none; cursor: pointer; font-family: inherit;">
+            <span>Descargar Manual & Checklist (PDF)</span>
             <span style="font-size: 0.8rem; opacity: 0.7;">[8.2 KB]</span>
-          </a>
+          </button>
         </div>
       </div>
     </div>
@@ -294,10 +294,10 @@
         </div>
         <div style="text-align: center; border-top: 1px solid var(--border-color); padding-top: 1.5rem;">
           <p style="font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 1.25rem;">Conozca los requisitos de elegibilidad técnica para postular un activo esta semana.</p>
-          <a href="docs/Programa_Proyectos_Piloto_PPP_2026.pdf" target="_blank" rel="noopener noreferrer" class="btn-cta">
-            <span>Abrir / Descargar Bases del Programa (PDF)</span>
+          <button onclick="openDownloadModal('Bases Programa Piloto', 'docs/Programa_Proyectos_Piloto_PPP_2026.pdf')" class="btn-cta" style="border: none; cursor: pointer; font-family: inherit;">
+            <span>Descargar Bases del Programa (PDF)</span>
             <span style="font-size: 0.8rem; opacity: 0.7;">[5.9 KB]</span>
-          </a>
+          </button>
         </div>
       </div>
     </div>
@@ -357,7 +357,7 @@
           <div class="download-icon">📋</div>
           <h3>Checklist Certeza Terrenos</h3>
           <p>Manual técnico para corredores de propiedades. Detección de expropiaciones, servidumbres y cálculo de suelo edificable real.</p>
-          <a href="docs/Checklist_Certeza_Normativa_Terrenos_PARDE.pdf" target="_blank" rel="noopener noreferrer" class="btn-secondary" style="width: 100%; justify-content: center;">Abrir / Descargar PDF (8.2 KB)</a>
+          <button onclick="openDownloadModal('Checklist Certeza Terrenos', 'docs/Checklist_Certeza_Normativa_Terrenos_PARDE.pdf')" class="btn-secondary" style="width: 100%; justify-content: center; border: none; cursor: pointer; font-family: inherit;">Descargar PDF (8.2 KB)</button>
         </div>
 
         <!-- Download 2 -->
@@ -365,7 +365,7 @@
           <div class="download-icon">📈</div>
           <h3>Guía Viabilidad & Costos</h3>
           <p>Estudio de caso y presupuestación comercial de edificaciones y locales comerciales, mecánica de suelos y optimización fiscal del IVA.</p>
-          <a href="docs/Guia_Viabilidad_Costos_2026_PARDE.pdf" target="_blank" rel="noopener noreferrer" class="btn-secondary" style="width: 100%; justify-content: center;">Abrir / Descargar PDF (10.5 KB)</a>
+          <button onclick="openDownloadModal('Guía Viabilidad & Costos', 'docs/Guia_Viabilidad_Costos_2026_PARDE.pdf')" class="btn-secondary" style="width: 100%; justify-content: center; border: none; cursor: pointer; font-family: inherit;">Descargar PDF (10.5 KB)</button>
         </div>
 
         <!-- Download 3 -->
@@ -373,7 +373,7 @@
           <div class="download-icon">🚀</div>
           <h3>Bases Programa Piloto PPP</h3>
           <p>Bases del programa para corredoras de propiedades e inversores. Postulación y diagnóstico de pre-factibilidad técnica.</p>
-          <a href="docs/Programa_Proyectos_Piloto_PPP_2026.pdf" target="_blank" rel="noopener noreferrer" class="btn-secondary" style="width: 100%; justify-content: center;">Abrir / Descargar PDF (5.9 KB)</a>
+          <button onclick="openDownloadModal('Bases Programa Piloto', 'docs/Programa_Proyectos_Piloto_PPP_2026.pdf')" class="btn-secondary" style="width: 100%; justify-content: center; border: none; cursor: pointer; font-family: inherit;">Descargar PDF (5.9 KB)</button>
         </div>
       </div>
     </div>
@@ -524,6 +524,63 @@
     </div>
   </div>
 
+  <!-- Download Request Modal -->
+  <div id="download-modal" style="display:none; position:fixed; inset:0; z-index:9999; background:rgba(28,29,31,0.75); backdrop-filter:blur(6px); align-items:center; justify-content:center; padding:1rem;">
+    <div style="background:var(--bg-primary,#FAF8F5); border-radius:1.25rem; max-width:480px; width:100%; max-height:90vh; overflow-y:auto; padding:2rem 1.75rem; box-shadow:0 24px 80px rgba(0,0,0,0.28); position:relative;">
+
+      <!-- Close button -->
+      <button onclick="closeDownloadModal()" aria-label="Cerrar" style="position:absolute;top:1rem;right:1rem;background:none;border:none;font-size:1.5rem;cursor:pointer;color:#5A5C60;">&#x2715;</button>
+
+      <!-- Header -->
+      <div style="text-align:center; margin-bottom:1.5rem;">
+        <div style="font-size:2rem; margin-bottom:0.5rem;">📥</div>
+        <h3 style="font-size:1.3rem; color:#1C1D1F; margin-bottom:0.4rem;">Descarga de Documento</h3>
+        <p id="download-modal-subtitle" style="font-size:0.9rem; color:#5A5C60;">Complete sus datos para recibir el documento.</p>
+      </div>
+
+      <!-- Info box -->
+      <div style="background:#F2EFE9; border-left:3px solid #9E763B; padding:0.75rem 1rem; border-radius:0.5rem; margin-bottom:1.5rem; font-size:0.82rem; color:#5A5C60; line-height:1.5;">
+        El documento será enviado a su correo o estará disponible para descarga inmediata tras llenar el formulario.
+      </div>
+
+      <!-- Form -->
+      <form id="download-request-form" onsubmit="submitDownloadRequest(event)">
+        <input type="hidden" id="download-modal-target-file" value="">
+        <input type="hidden" id="download-modal-title" value="">
+
+        <div style="display:grid; gap:1rem;">
+          <div>
+            <label for="download-req-name" style="display:block; font-size:0.82rem; font-weight:600; color:#1C1D1F; margin-bottom:0.35rem;">Nombre Completo *</label>
+            <input type="text" id="download-req-name" required placeholder="Su nombre" style="width:100%; padding:0.65rem 0.9rem; border:1.5px solid #E2DDD5; border-radius:0.6rem; font-size:0.9rem; background:#fff; color:#1C1D1F; outline:none; box-sizing:border-box; transition:border-color .2s;" onfocus="this.style.borderColor='#9E763B'" onblur="this.style.borderColor='#E2DDD5'">
+          </div>
+          <div>
+            <label for="download-req-email" style="display:block; font-size:0.82rem; font-weight:600; color:#1C1D1F; margin-bottom:0.35rem;">Email *</label>
+            <input type="email" id="download-req-email" required placeholder="su@email.com" style="width:100%; padding:0.65rem 0.9rem; border:1.5px solid #E2DDD5; border-radius:0.6rem; font-size:0.9rem; background:#fff; color:#1C1D1F; outline:none; box-sizing:border-box; transition:border-color .2s;" onfocus="this.style.borderColor='#9E763B'" onblur="this.style.borderColor='#E2DDD5'">
+          </div>
+        </div>
+
+        <!-- Status message -->
+        <div id="download-modal-status" style="margin-top:1rem; display:none; padding:0.75rem 1rem; border-radius:0.5rem; font-size:0.85rem; text-align:center;"></div>
+
+        <!-- Submit -->
+        <button type="submit" id="download-submit-btn" style="margin-top:1.25rem; width:100%; padding:0.85rem; background:#9E763B; color:#fff; border:none; border-radius:0.75rem; font-size:0.95rem; font-weight:700; cursor:pointer; letter-spacing:0.03em; transition:background .2s;">
+          Obtener Documento
+        </button>
+      </form>
+
+      <!-- Success area -->
+      <div id="download-success-area" style="display:none; text-align:center; padding:1rem 0;">
+        <div style="font-size:2.8rem; margin-bottom:0.75rem;">✅</div>
+        <p style="color:#1C1D1F; font-weight:700; font-size:1.05rem; margin-bottom:0.6rem;">¡Listo!</p>
+        <p style="color:#5A5C60; font-size:0.88rem; line-height:1.6; margin-bottom: 1.5rem;">Si la descarga no inició automáticamente, puedes usar el botón de abajo.</p>
+        <a id="download-direct-link" href="#" target="_blank" rel="noopener noreferrer" style="display:inline-block; padding:0.7rem 2rem; background:#9E763B; color:#fff; text-decoration:none; border-radius:0.75rem; font-size:0.9rem; font-weight:600; cursor:pointer; margin-bottom: 0.5rem;">Descargar Ahora</a>
+        <br>
+        <button onclick="closeDownloadModal()" style="margin-top:0.5rem; padding:0.7rem 2rem; background:transparent; color:#5A5C60; border:1px solid #E2DDD5; border-radius:0.75rem; font-size:0.9rem; font-weight:600; cursor:pointer;">Cerrar</button>
+      </div>
+
+    </div>
+  </div>
+
   <script src="js/app.js"></script>
   <script>
     function openCvModal(who, filename, personName) {
@@ -599,6 +656,114 @@
         statusEl.style.color = '#c0392b';
         btn.disabled = false;
         btn.textContent = 'Enviar Solicitud y Acceder al CV';
+      }
+    }
+
+    // --- DOWNLOAD MODAL LOGIC ---
+    function openDownloadModal(title, filename) {
+      document.getElementById('download-modal-target-file').value = filename;
+      document.getElementById('download-modal-title').value = title;
+      document.getElementById('download-modal-subtitle').textContent = 'Descarga: ' + title;
+      
+      document.getElementById('download-request-form').style.display = '';
+      document.getElementById('download-success-area').style.display = 'none';
+      document.getElementById('download-modal-status').style.display = 'none';
+      
+      document.getElementById('download-submit-btn').disabled = false;
+      document.getElementById('download-submit-btn').textContent = 'Obtener Documento';
+      
+      // Clear fields
+      ['download-req-name','download-req-email'].forEach(id => document.getElementById(id).value = '');
+      
+      const modal = document.getElementById('download-modal');
+      modal.style.display = 'flex';
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeDownloadModal() {
+      document.getElementById('download-modal').style.display = 'none';
+      document.body.style.overflow = '';
+    }
+
+    document.getElementById('download-modal').addEventListener('click', function(e) {
+      if (e.target === this) closeDownloadModal();
+    });
+
+    async function submitDownloadRequest(e) {
+      e.preventDefault();
+      const btn = document.getElementById('download-submit-btn');
+      const statusEl = document.getElementById('download-modal-status');
+      const name = document.getElementById('download-req-name').value;
+      const email = document.getElementById('download-req-email').value;
+      const targetFile = document.getElementById('download-modal-target-file').value;
+      const title = document.getElementById('download-modal-title').value;
+
+      btn.disabled = true;
+      btn.textContent = 'Procesando...';
+      statusEl.style.display = 'none';
+
+      // WEBHOOK URL: Replace this URL with your Make.com or Zapier Webhook URL
+      const WEBHOOK_URL = 'https://hook.us1.make.com/REPLACE_WITH_YOUR_WEBHOOK_URL';
+
+      try {
+        // We also send to Web3Forms as backup or primary if webhook isn't configured
+        const response = await fetch('https://api.web3forms.com/submit', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+          body: JSON.stringify({
+            access_key: 'e490e5d7-70f1-4840-95e6-b4c4a9084d18',
+            subject: '📥 Nueva Descarga: ' + title,
+            from_name: name,
+            email: email, // Set to user's email so you can reply
+            message:
+              '📥 NUEVO LEAD DE DESCARGA\n\n' +
+              '• Nombre: ' + name + '\n' +
+              '• Email: ' + email + '\n' +
+              '• Documento Descargado: ' + title + '\n\n' +
+              '— Enviado desde www.pardearquitectos.com'
+          })
+        });
+        
+        // Optional: Send data to Make.com/Zapier Webhook
+        // You can enable this by uncommenting if you have a valid Webhook URL
+        /*
+        await fetch(WEBHOOK_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            name: name,
+            email: email,
+            document: title,
+            source: 'Website Download'
+          })
+        });
+        */
+
+        const data = await response.json();
+        if (data.success) {
+          // Trigger file download
+          const link = document.createElement('a');
+          link.href = targetFile;
+          link.target = '_blank';
+          link.download = '';
+          document.body.appendChild(link);
+          link.click();
+          document.body.removeChild(link);
+
+          // Update UI
+          document.getElementById('download-direct-link').href = targetFile;
+          document.getElementById('download-request-form').style.display = 'none';
+          document.getElementById('download-success-area').style.display = 'block';
+        } else {
+          throw new Error('Error en el envío');
+        }
+      } catch (err) {
+        statusEl.textContent = 'Hubo un problema al procesar la solicitud. Inténtelo nuevamente.';
+        statusEl.style.display = 'block';
+        statusEl.style.background = '#fff0f0';
+        statusEl.style.color = '#c0392b';
+        btn.disabled = false;
+        btn.textContent = 'Obtener Documento';
       }
     }
   </script>
