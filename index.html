@@ -623,9 +623,6 @@
       btn.textContent = 'Enviando...';
       statusEl.style.display = 'none';
 
-      // Record to Google Sheets
-      sendToGoogleSheet(name, email, 'Solicitud CV: ' + targetPerson + ' (' + company + ')');
-
       try {
         const response = await fetch('https://api.web3forms.com/submit', {
           method: 'POST',
@@ -692,26 +689,6 @@
       if (e.target === this) closeDownloadModal();
     });
 
-    // GOOGLE APPS SCRIPT WEB APP URL (Leads Descargas PARDE)
-    const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzZiQMx5xq1gUSg3bPv0QJP4tlKmGV4kOdO8HfU5oixhp9sFSaQP9DUT34U5tdWQA-LNQ/exec';
-
-    async function sendToGoogleSheet(name, email, documentName) {
-      try {
-        await fetch(APPS_SCRIPT_URL, {
-          method: 'POST',
-          mode: 'no-cors',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            name: name,
-            email: email,
-            document: documentName
-          })
-        });
-      } catch (e) {
-        console.warn('Error enviando a Google Sheets:', e);
-      }
-    }
-
     async function submitDownloadRequest(e) {
       e.preventDefault();
       const btn = document.getElementById('download-submit-btn');
@@ -725,12 +702,8 @@
       btn.textContent = 'Procesando...';
       statusEl.style.display = 'none';
 
-      // 1. Write row directly to Google Sheets (Nombre, Email, Documento, Fecha)
-      // This will automatically trigger Make.com's "Watch New Rows" module!
-      sendToGoogleSheet(name, email, title);
-
       try {
-        // 2. Send email notification via Web3Forms
+        // Send email notification via Web3Forms
         const response = await fetch('https://api.web3forms.com/submit', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
@@ -744,13 +717,13 @@
               '• Nombre: ' + name + '\n' +
               '• Email: ' + email + '\n' +
               '• Documento Descargado: ' + title + '\n\n' +
-              '— Registrado automáticamente en Google Sheets y enviado desde www.pardearquitectos.com'
+              '— Enviado desde www.pardearquitectos.com'
           })
         });
 
         const data = await response.json();
         if (data.success) {
-          // 3. Trigger PDF download
+          // Trigger PDF download
           const link = document.createElement('a');
           link.href = targetFile;
           link.target = '_blank';
@@ -759,7 +732,7 @@
           link.click();
           document.body.removeChild(link);
 
-          // 4. Update UI
+          // Update UI
           document.getElementById('download-direct-link').href = targetFile;
           document.getElementById('download-request-form').style.display = 'none';
           document.getElementById('download-success-area').style.display = 'block';
